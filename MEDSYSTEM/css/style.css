@@ -1,0 +1,458 @@
+.card [type="text"]{
+	
+}
+.card .text-muted{
+	
+}
+.obligatoire{
+ color:red;
+}
+.card .h1{
+
+}
+body{
+background-color: #f5f7fb;
+}
+.loginsystembtn [type="submit"]{
+	
+	background-color: #0cc68f;
+	color: #FFF;	
+}
+.loginsystembtn [type="submit"]:hover{
+	background-color: #0cc68f;
+	color: #FFF;
+}
+.messageerreur{
+    height:30px;
+   	font-weight: bold;
+    color: red;
+    font-size: 13px;
+	text-transform:uppercase;
+	margin-bottom:10px;
+	margin-top:-5px;
+    	
+}
+.positionadm p a:hover{
+	color:#faaf40;
+}
+.positionadm p a{
+	text-transform:uppercase;
+	text-decoration:none;
+	color:#4A89DC;
+	font-weight:bold;
+	font-size:13.5px;
+}
+.positionadm p{
+	text-transform:uppercase;
+	font-weight:bold;
+	font-size:13.5px;
+	color:#4A89DC;	
+}
+.ajttete{
+	font-weight: bold;
+	font-size: 20px;
+	text-transform: uppercase;
+	margin-top: 5px;
+	margin-bottom: -20px;
+}
+.ajttete p{
+text-align:center;
+color: #faaf40;
+}
+   #profile-container {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 50%;
+}
+#imageUpload
+{
+    display: none;
+}
+
+#profileImage
+{
+    cursor: pointer;
+}
+
+
+#profile-container img {
+    width: 150px;
+    height: 150px;
+}
+.voirtete h2{
+font-weight:bolder;
+color: #faaf40;
+font-size: 17px;
+text-transform:uppercase;
+}
+.card a:hover{
+	text-decoration: none;
+}
+.linkvoirutilisateur a:hover{
+	text-decoration: none;
+}
+.linkvoirutilisateur .card:hover{
+	background-color: #EEE;	
+}
+.media-body .m-0{
+	color: #495057;
+text-transform: uppercase;
+}
+.text-muted{
+	text-transform: uppercase;
+	margin-top: 5px;
+}
+.media .avatar{
+	border-radius:0px;
+}
+.avatar img{
+ /*	border-radius:50%; */
+}
+.profilphoto img{
+	width: 150px;
+	border:2px solid #DDD;
+	padding:3px;
+}
+.infopersonnel h4{
+	color: #349ad5;
+}
+.media-body m-0{
+	font-weight: normal;
+}
+.messageoblogation{
+	width: 100%;
+	height: 35px;
+	background-color: #b8dde2;
+	margin-bottom: 10px;
+	border-left: 5px solid #3a9cda;
+}
+.messageoblogation p{
+	color:#3a9cda;
+	text-transform: uppercase;
+	line-height: 35px;
+	margin-left: 10px;
+	font-size: 13.5px;
+	font-weight: bold;
+}
+.formvalider{
+	width: 100%;
+	height: 20px;
+	margin-bottom: 5px;	
+}
+.formvalider p{
+	color:green;
+	text-transform: uppercase;
+	line-height: 20px;
+	text-align: center;
+	margin-left: 10px;
+	font-size: 14px;
+	font-weight: bold;	
+}
+.infopersonnel{
+	margin: 10px;
+	border:1px solid #349ad5;
+	padding: 10px;
+}
+.affprofil .form-group label{
+	font-weight: normal;
+}
+.nomfamille{
+	text-transform: uppercase;
+}
+.profilbtnimprimer [type="button"]{
+ border-radius: 0px;
+}
+.profilteteimprimer .card .card-body{
+	height: 55px;
+}
+.profilteteimprimer .card .card-body ul li a{
+   margin-top: -10px;
+   text-align: center;
+   margin-left: 15px;
+}
+.header-day{
+	font-size: 18px;
+	font-weight: bold;
+}
+.day{
+	font-size: 16px;
+}
+.month{
+	font-size: 22px;
+	font-weight: bold;
+	margin-top: -5px;
+}
+.imgenteteprofil{
+float: left;	
+}
+.enteteprofil h3{
+	text-align: center;
+	margin-top: 2px;
+	color: #faaf40;
+	font-size: 25px;
+	font-weight: bolder;
+}
+.enteteprofil p{
+	margin-top: -8px;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+.enteteprofil h4{
+	margin-top: -8px;	
+	text-transform: uppercase;
+	font-size: 14px;
+	font-weight: bold;
+
+}
+.barprofil0{
+
+}
+.barprofil1{
+	width: 100%;
+	height: 3px;
+	margin-top: 10px;
+	background-color: #faaf40;
+}
+.barprofil2{
+	width: 100%;
+	margin-top: 2px;
+	height: 1px;
+	background-color: #faaf40;
+}
+.profilpieds {
+	float: right;
+	width: 250px;
+	height: 1.3px;
+	margin-left:10px;
+	background-color: gray;
+}
+#impression{
+	cursor: pointer;
+}
+/*tabs*/
+input[name=tabstete]{
+	display:none;
+}
+
+input[name=tabstete] + label{
+	padding: 7px;
+	padding-left: 10px; 
+    float: right;  
+	padding-right: 10px;
+	background:#0cc68f;
+	color:white;
+	margin-top: 8px;
+	font-size:14px;
+	border:5px solid #FFF;
+    
+}
+.tab-content{
+	display:none;
+}
+
+#tab1:checked ~ #tab-content1, #tab2:checked ~ #tab-content2 {
+	display:block;
+}
+/*tabs*/
+/*tabs-2*/
+.tab-wrap {
+  position: relative;
+  display: flex;
+}
+input[type="radio"][name="tabs"] {
+  position: absolute;
+  z-index: -1;
+}
+input[type="radio"][name="tabs"]:checked + .tab-label-content .tab-content {
+  display: block;
+}
+input[type="radio"][name="tabs"]:nth-of-type(1):checked ~ .slide {
+  left: calc((100% / 4) * 0);
+}
+input[type="radio"][name="tabs"]:nth-of-type(2):checked ~ .slide {
+  left: calc((100% / 4) * 1);
+}
+input[type="radio"][name="tabs"]:nth-of-type(3):checked ~ .slide {
+  left: calc((100% / 4) * 2);
+}
+input[type="radio"][name="tabs"]:nth-of-type(4):checked ~ .slide {
+  left: calc((100% / 4) * 3);
+}
+input[type="radio"][name="tabs"]:first-of-type:checked ~ .slide {
+  left: 0;
+}
+
+.profiltxt{
+  cursor: pointer;
+  color:#FFF;
+  background-color:#00bcd4;
+  padding:10px;
+  margin-right: 5px;
+  margin-bottom: -7px;
+  position:absolute ; 
+  z-index: 2px;  
+}
+.profiltxt a{
+  color:#FFF;
+  background-color:#00bcd4;
+}
+.profiltxt a:hover{
+color: #FFF;
+text-decoration: none;
+}
+.affprofilutilisateur{
+  position: relative;
+  background-color: #FFF;
+}
+.tab-label-content .tab-content {
+  position: absolute;
+  display: none;
+}
+.bloquerutilisateur button{
+	text-transform:uppercase;	
+	margin-top:10px;
+	color:#FFF;
+	border:none;
+	background-color:#00bcd4;
+	width:100%;
+	height:35px;
+	border-radius:5px;
+	cursor:pointer;	
+}
+.custom-controls-stacked{
+	margin-left:-13px;
+}
+.custom-control-label{
+	text-transform:uppercase;
+	font-size:13.2px;
+	font-weight:bold;
+	margin-left:-2px;
+}
+.buttonaction{
+	text-align:center;
+	text-transform:uppercase;
+	font-weight:bold;
+	font-size:10px;
+	color:red;
+}
+.btnmessage{
+	height:20px;
+}
+.buttonvalider{
+	text-align:center;
+	text-transform:uppercase;
+	font-weight:bold;
+	font-size:10px;
+	color:green;	
+}
+.btndebloquertete{
+	width:100%;
+	border:none;
+	color:#FFF;
+	background-color:#00bcd4;
+	height:30px;
+}
+
+/*tabs-2*/
+/*modifiermain*/
+#btnretour{
+margin-bottom: 10px;
+margin-left: -10px;
+color: #FFF;
+text-transform: uppercase;
+}
+#btnretour a{
+color: #FFF;
+text-decoration: none;
+border:none;
+}
+/*modifiermain*/
+/*heures*/
+#date_heure{
+font-size:20px;
+font-weight:bold;
+color:gray;	
+}
+/*heures*/
+
+/**/
+.basmenu input[type="submit"]{
+color:white; 
+width:35px;  
+height:40px; 
+font-family:arial;
+border:1px solid #DDD; 
+background-color:#faaf40;
+}
+.col-sm-9.basmenu input[type="text"]{
+height:45px;
+border-radius:5px;
+border:none; 
+text-align:center; 
+border:1px solid #DDD; 
+width:100%;
+}
+#resultindex{  
+font-weight:bold;
+color:#900;
+font-size:16px;
+text-decoration:none;
+background-color:#DDD;
+width:100%;
+position: absolute;
+z-index: 2;
+color:#900;
+} 
+/**/
+.loginbackimg{
+	background-image:url("../images/full_image_3.jpg");
+    background-size:cover;	
+}
+/*Rendez-Vous*/
+.messageerreurrdv{
+    height:30px;
+   	font-weight: bold;
+    color: red;
+    font-size: 13px;
+	text-transform:uppercase;
+	margin-top:-5px;   	
+}
+.messageerreurrdv2{
+    height:30px;
+   	font-weight: bold;
+    color: green;
+    font-size: 15px;
+	text-transform:uppercase;
+	margin-bottom:-15px;    	
+}
+.messrdv p{
+
+}
+.page-contentrdv{
+ background: linear-gradient(360deg, #f5f7fb, #E4F1FE);
+ width:100%;
+ height:300px;	
+}
+.mainrdv{
+	background-color:#FFF;
+	width:100%;
+	opacity:0.9;
+}
+.mainrdv p{
+	font-size:25px;
+	margin-top:10px;
+	color:#4A89DC;
+	font-weight:bold;
+	text-transform:uppercase;
+	text-align:center;
+}
+.card-footer button{
+	border-radius: 0;
+	text-transform:uppercase;
+}
+/*Rendez-Vous*/
