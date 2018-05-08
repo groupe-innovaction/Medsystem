@@ -1,6 +1,4 @@
-.card [type="text"]{
-	
-}
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
 .card .text-muted{
 	
 }
@@ -126,17 +124,17 @@ text-transform: uppercase;
 }
 .messageoblogation{
 	width: 100%;
-	height: 35px;
+	height: 40px;
 	background-color: #b8dde2;
 	margin-bottom: 10px;
-	border-left: 5px solid #3a9cda;
+	border-left: 7px solid #3a9cda;
 }
 .messageoblogation p{
 	color:#3a9cda;
 	text-transform: uppercase;
-	line-height: 35px;
+	line-height: 40px;
 	margin-left: 10px;
-	font-size: 13.5px;
+	font-size: 16px;
 	font-weight: bold;
 }
 .formvalider{
@@ -418,7 +416,7 @@ color:#900;
     height:30px;
    	font-weight: bold;
     color: red;
-    font-size: 13px;
+    font-size: 13.5px;
 	text-transform:uppercase;
 	margin-top:-5px;   	
 }
@@ -430,8 +428,8 @@ color:#900;
 	text-transform:uppercase;
 	margin-bottom:-15px;    	
 }
-.messrdv p{
-
+.messrdv{
+margin-bottom:15px;
 }
 .page-contentrdv{
  background: linear-gradient(360deg, #f5f7fb, #E4F1FE);
@@ -456,3 +454,47 @@ color:#900;
 	text-transform:uppercase;
 }
 /*Rendez-Vous*/
+
+/*Lister RDV*/
+#btnvaliderdv{
+	border:none;
+	text-transform:uppercase;
+	background-color:#4A89DC;
+	color:#FFF;
+	border-radius:10px;
+}
+#validerrdv button{
+	border-radius:10px;
+}
+#Annulerrdv button{
+	border:none;
+	text-transform:uppercase;
+	background-color:#D4553A;
+	color:#FFF;
+	border-radius:0px;
+	border-radius:10px;
+}
+.partievaliderrdv p{
+text-align:center;
+width:100%;
+text-transform:uppercase;
+color:#3a9cda;
+font-size:16px;
+font-weight:bold;
+margin-top:15px;
+margin-left:20px;
+}
+.partieannulerrdv p{
+text-align:center;
+width:100%;
+text-transform:uppercase;
+color:#D4553A;
+font-size:16px;
+font-weight:bold;
+margin-top:15px;
+margin-left:20px;	
+}
+.radiordv{
+	margin-left:100px;
+}
+/*Lister RDV*/

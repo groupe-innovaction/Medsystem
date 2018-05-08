@@ -8,7 +8,8 @@ if(isset($_POST['submit'])){
   $mail=$_POST['mail'];
   $cmail=$_POST['cmail'];
   $lns=$_POST['lns'];
-  $dns=$_POST['dns'];
+  $dns=$_POST['dns'];   
+  $dns=date("d F Y");
   $nif=$_POST['nif'];  
   $sexe=$_POST['sexe'];
   $statutm="";

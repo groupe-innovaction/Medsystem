@@ -120,7 +120,7 @@ if(Authsuperadmin::isLogged()){
 				   <li><a href='#'> <i class="fe fe-folder-plus"> </i> Rendez-vous</a>
 					   <ul>
 						 <li><a href='supadmprendrerendezvous.php'>Demande Rendez-vous</a></li>
-						 <li><a href=''>Lister Rendez-vous</a></li>
+						 <li><a href='supadmlisterrendezvous.php'>Lister Rendez-vous</a></li>
 						 <li><a href=''>Annuler Rendez-vous</a></li>
 					  </ul>  
 				   </li>

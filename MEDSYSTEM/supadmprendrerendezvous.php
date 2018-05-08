@@ -114,7 +114,7 @@ if(Authsuperadmin::isLogged()){
 				   <li><a href='#'> <i class="fe fe-folder-plus"> </i> Rendez-vous</a>
 					   <ul>
 						 <li><a href=''>Prendre Rendez-vous</a></li>
-						 <li><a href=''>Lister Rendez-vous</a></li>
+						 <li><a href='supadmlisterrendezvous.php'>Lister Rendez-vous</a></li>
 						 <li><a href=''>Annuler Rendez-vous</a></li>
 					  </ul>  
 				   </li>
@@ -134,10 +134,7 @@ if(Authsuperadmin::isLogged()){
 		    <br>
             <div class="positionadm">
               <p> <a href="superadminpage.php"><i class="fe fe-home"> </i> Acceuil </a> <i class="fe fe-chevron-right"> </i>  Demande De Rendez-vous </p>
-            </div>	
-             <div class="messrdv">
-			   <p>Ce formulaire vous permet de demander un rendez-vous en ligne, Nous vous contacterons ensuite par Telephone ou Email dans les meilleurs delais afin de fixer definitement avec vous la date et l'heure du rendez-vous...Merci!!!</p>
-			 </div>			
+            </div>			
 			<?php
 			include("Traitement/superadminrendezvoustraitement.php");
 			?>
@@ -152,10 +149,17 @@ if(Authsuperadmin::isLogged()){
 	     <div class="col-md-12">
 		  <div class="row">
 		   <div class="mainrdv">
-		     <p>Demande De Rendez-vous</p>
+		     <p>Demande De Rendez-vous</p>      
               <form class="card" method="POST" action="">
                 <div class="card-body">
                   <div class="row">
+                     <div class="col-sm-12 col-md-12"> 
+                     <div class="messrdv">                 
+<span>Ce formulaire vous permet de demander un rendez-vous en ligne, Nous vous contacterons ensuite par Telephone ou Email dans les meilleurs delais afin de fixer definitement avec vous la date et l'heure du rendez-vous...Merci!!!</span>
+<br>
+                      </div>
+                    </div> 
+
                     <div class="col-sm-6 col-md-6">
                       <div class="form-group">
                         <label class="form-label">Nom <span class="obligatoire">*</span></label>
@@ -178,14 +182,14 @@ if(Authsuperadmin::isLogged()){
                     <div class="col-sm-6 col-md-6">
                     <div class="form-group">
                         <label class="form-label">Date De Naissance <span class="obligatoire">*</span></label>
-                           <input type="date" class="form-control" name="daterdv" placeholder="Date De Naissance" value="<?php if(isset($daterdv)){echo $daterdv;} ?>">  
+                           <input type="date" class="form-control" name="daternaissancerdv" placeholder="Date De Naissance" value="<?php if(isset($daternaissancerdv)){echo $daternaissancerdv;} ?>">  
                     </div>
                     </div> 
                     <div class="col-sm-6 col-md-6">
                       <div class="form-group">
                         <label class="form-label">Indiquer la specialite dans laquelle vouz souhaitez consulter <span class="obligatoire">*</span></label>
                         <select name="Departementrdv" class="form-control">
-						  <option value="<?php if(isset($Departementrdv)){echo $Departementrdv;} ?>"><?php if(isset($Departementrdv)){echo $Departementrdv;} ?></option>
+						              <option value=""></option>
                           <option value="Ophtalmologie">Ophtalmologie</option>
                           <option value="Gynecologique">Gynecologique</option>
 						  <option value="Pediatrie">Pediatrie</option>
@@ -215,7 +219,7 @@ if(Authsuperadmin::isLogged()){
                       <div class="form-group">
                         <label class="form-label">Site <span class="obligatoire">*</span></label>
                         <select name="siterdv" class="form-control">
-						  <option value="<?php if(isset($siterdv)){echo $siterdv;} ?>"><?php if(isset($siterdv)){echo $siterdv;} ?></option>
+						              <option value=""></option>
                           <option value="Ouest">Ouest</option>
                           <option value="Artibonite">Artibonite</option>
 						  <option value="Centre">Centre</option>

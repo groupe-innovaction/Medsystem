@@ -2,25 +2,27 @@
 include("bd/connect.php");
 if(isset($_POST['submitrdv'])){
 	
-	$nomrdv=$_POST['nomrdv'];
-	$prenomrdv=$_POST['prenomrdv'];
-	$telephonerdv=$_POST['telephonerdv'];
-	$daterdv=$_POST['daterdv'];
-	$Departementrdv=$_POST['Departementrdv'];
-	$mailrdv=$_POST['mailrdv'];
-	$sexerdv=$_POST['sexerdv'];
-	$Symptomesrdv=$_POST['Symptomesrdv'];
-	$siterdv=$_POST['siterdv'];
+	$nomrdv=htmlspecialchars($_POST['nomrdv']);
+	$prenomrdv=htmlspecialchars($_POST['prenomrdv']);
+	$telephonerdv=htmlspecialchars($_POST['telephonerdv']);
+	$daternaissancerdv=htmlspecialchars($_POST['daternaissancerdv']);
+	$Departementrdv=htmlspecialchars($_POST['Departementrdv']);
+	
+	$Etatrdv="Demande";
+	$mailrdv=htmlspecialchars($_POST['mailrdv']);
+	$sexerdv=htmlspecialchars($_POST['sexerdv']);
+	$Symptomesrdv=htmlspecialchars($_POST['Symptomesrdv']);
+	$siterdv=htmlspecialchars($_POST['siterdv']);
 	
 	if(!empty($_POST['nomrdv']) AND !empty($_POST['prenomrdv']) AND !empty($_POST['telephonerdv']) AND 
-	!empty($_POST['daterdv']) AND !empty($_POST['Departementrdv']) AND !empty($_POST['mailrdv']) AND !empty($_POST['sexerdv']) AND 
+	!empty($_POST['daternaissancerdv']) AND !empty($_POST['Departementrdv']) AND !empty($_POST['mailrdv']) AND !empty($_POST['sexerdv']) AND 
 	!empty($_POST['siterdv']) AND !empty($_POST['Symptomesrdv'])){
 		
 		if(filter_var($mailrdv, FILTER_VALIDATE_EMAIL)){
 			
 			
-		 $req=$conbd->prepare("INSERT INTO rendezvous(nomrdv,prenomrdv,telephonerdv,daterdv,Departementrdv,mailrdv,sexerdv,siterdv,Symptomesrdv) VALUES(?,?,?,?,?,?,?,?,?)");	
-		 $req->execute(array($nomrdv,$prenomrdv,$telephonerdv,$daterdv,$Departementrdv,$mailrdv,$sexerdv,$siterdv,$Symptomesrdv));
+		 $req=$conbd->prepare("INSERT INTO rendezvous(nomrdv,prenomrdv,telephonerdv,daternaissancerdv,Departementrdv,Etatrdv,mailrdv,sexerdv,siterdv,Symptomesrdv) VALUES(?,?,?,?,?,?,?,?,?,?)");	
+		 $req->execute(array($nomrdv,$prenomrdv,$telephonerdv,$daternaissancerdv,$Departementrdv,$Etatrdv,$mailrdv,$sexerdv,$siterdv,$Symptomesrdv));
 		 if($req){
 			 $rdvcorrect="Demande De Rendez-vous Valide Nous Vous Contacterons Sous Peu...";
 		 }else{

@@ -111,8 +111,8 @@ if(Authsuperadmin::isLogged()){
            </li>
            <li><a href='#'> <i class="fe fe-folder-plus"> </i> Rendez-vous</a>
              <ul>
-             <li><a href=''>Prendre Rendez-vous</a></li>
-             <li><a href=''>Lister Rendez-vous</a></li>
+             <li><a href='supadmprendrerendezvous.php'>Prendre Rendez-vous</a></li>
+             <li><a href='supadmlisterrendezvous.php'>Lister Rendez-vous</a></li>
              <li><a href=''>Annuler Rendez-vous</a></li>
             </ul>  
            </li>
@@ -145,7 +145,7 @@ if(Authsuperadmin::isLogged()){
      include('Traitement/superadminajouterutilisateur.php');
            ?>
          <div class="formvalider">
-          <p> <i class="fe fe-check-circle">  </i> <?php if(isset($form_ok)){ echo $form_ok;}?></p>
+          <p> <?php if(isset($form_ok)){ echo $form_ok;}?></p>
          </div>
         </div>  
               <form class="card" method="POST" action="" enctype="multipart/form-data">
