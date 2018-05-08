@@ -26,11 +26,3 @@ if(isset($_POST['valiersubmit'])){
 }
 
 ?>
-
-<?php
-include("bd/connect.php");
-if(isset($_POST['annulersubmit'])){
-	
-}
-
-?>

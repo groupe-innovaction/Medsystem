@@ -153,7 +153,14 @@ if(Authsuperadmin::isLogged()){
 		<div class="col-md-12">	
 		 <div class="row">    
            <div class="col-md-4">
-              <div class="card">
+		     <?php include("Traitement/etatrendezvoustraitementmodifier.php"); ?>
+			 <span class="messageerreurrdv"> 
+			    <?php if(isset($rdvincorrect)){echo $rdvincorrect;}?> 
+			 </span>
+			<span class="messageerreurrdv2">
+			    <?php if(isset($rdvcorrect)){ echo $rdvcorrect; } ?>
+			</span>				 
+              <form class="card" method="POST">
                 <div class="card-header">
                   <h3 class="card-title">Information Sur la Demande</h3>
                 </div>
@@ -164,7 +171,7 @@ if(Authsuperadmin::isLogged()){
                   </div>
                   <div class="form-group">
                     <label class="form-label">Prenom <span class="obligatoire">*</span></label>
-                    <input type="text" name="modifierprenomnomRDV" class="form-control" value="<?php echo $don['prenomrdv'];?>"/>
+                    <input type="text" name="modifierprenomRDV" class="form-control" value="<?php echo $don['prenomrdv'];?>"/>
                   </div>
                   <div class="form-group">
                     <label class="form-label">Telephone <span class="obligatoire">*</span></label>
@@ -173,7 +180,10 @@ if(Authsuperadmin::isLogged()){
                   <div class="form-group">
                     <label class="form-label">Email <span class="obligatoire">*</span></label>
                     <input type="text" name="modifiermailRDV" class="form-control" value="<?php echo $don['mailrdv'];?>"/>
-                  </div>
+					   <span class="messageerreur">
+					   <?php if(isset($emailrdvincorrect)){echo $emailrdvincorrect;} ?>
+					   </span>					
+                  </div>				  
                   <div class="form-group">
                      <label class="form-label">Departement <span class="obligatoire">*</span></label>
                        <select name="modifierDepartementRDV" class="form-control">
@@ -204,8 +214,11 @@ if(Authsuperadmin::isLogged()){
                     <label class="form-label">Symptomes <span class="obligatoire">*</span></label>
                      <textarea name="modifiersymptomesRDV" class="form-control" rows="6" cols="47" ><?php echo $don['Symptomesrdv'];?></textarea>
                   </div>
+				<div  id="validerrdv" class="card-footer text-center">
+                  <button type="submit" name="modifierrdvsubmit" class="btn btn-primary"> <i class="fe fe-edit"> </i> Modifier</button> 
+                </div>				  
                 </div>
-              </div>		   
+              </form>		   
 		   </div> 			 
            <div class="col-md-8">
             <?php
@@ -213,10 +226,10 @@ if(Authsuperadmin::isLogged()){
 			?>		
 				   <span class="messageerreurrdv">
 					 <?php if(isset($repconfirmation1)){ echo $repconfirmation1; } ?>
-				   </span>			
+				   </span>			   
 		    <form class="card" method="POST">
 				 <div class="partievaliderrdv">
-					<p><?php echo $don['prenomrdv'];?> <?php echo $don['nomrdv'];?></p>
+					<p>Valider La Demande</p>
 				 </div>				
                    <br>
 				<div class="col-sm-12 col-md-12">
@@ -235,20 +248,29 @@ if(Authsuperadmin::isLogged()){
                   <button type="submit" name="valiersubmit" class="btn btn-primary"> <i class="fe fe-check-circle"> </i> Valider la Demande</button> 
                 </div>			   
 		    </form>	
-
+            <?php include("Traitement/etatrendezvoustraitementAnnuler.php"); ?>
+			  <span class="messageerreurrdv2">
+				<?php if(isset($rdvAnnuler)){ echo $rdvAnnuler; } ?>
+			  </span>			
+			  <span class="messageerreurrdv">
+				<?php if(isset($rdvEchec)){ echo $rdvEchec; } ?>
+			  </span>
+			  <span class="messageerreurrdv">
+				<?php if(isset($repAnnuler)){ echo $repAnnuler; } ?>
+			  </span>			  
 		    <form class="card" method="POST">
 				 <div class="partieannulerrdv">
-					<p><?php echo $don['prenomrdv'];?> <?php echo $don['nomrdv'];?></p>
+					<p>Annuler La Demande ?</p>
 				 </div>				
                    
 				   <div class="radiordv">
                          <div class="custom-controls-stacked">
                           <label class="custom-control custom-radio">
-                            <input type="radio" class="custom-control-input" name="radio1" value="Annuler" checked>
+                            <input type="radio" class="custom-control-input" name="radiordv1" value="Non">
                             <div class="custom-control-label">Non</div>
                           </label>
                           <label class="custom-control custom-radio">
-                            <input type="radio" class="custom-control-input" name="radio1" value="Valider">
+                            <input type="radio" class="custom-control-input" name="radiordv1" value="Oui">
                             <div class="custom-control-label">Oui</div>
                           </label>
                         </div>

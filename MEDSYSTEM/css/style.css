@@ -461,10 +461,18 @@ margin-bottom:15px;
 	text-transform:uppercase;
 	background-color:#4A89DC;
 	color:#FFF;
-	border-radius:10px;
+	border-radius:3px;
+}
+#btnvaliderdv2{
+	border:none;
+	text-transform:uppercase;
+	background-color:#D4553A;
+	color:#FFF;
+	border-radius:3px;
 }
 #validerrdv button{
-	border-radius:10px;
+	border-radius:3px;
+	float:right;
 }
 #Annulerrdv button{
 	border:none;
@@ -472,7 +480,8 @@ margin-bottom:15px;
 	background-color:#D4553A;
 	color:#FFF;
 	border-radius:0px;
-	border-radius:10px;
+	border-radius:3px;
+	float:right;
 }
 .partievaliderrdv p{
 text-align:center;
@@ -496,5 +505,20 @@ margin-left:20px;
 }
 .radiordv{
 	margin-left:100px;
+}
+#tiredemande1{
+	text-transform:uppercase;
+	font-weight:bold;
+	color:#32CD32;
+}
+#tiredemande2{
+	text-transform:uppercase;
+	font-weight:bold;
+	color:#FFD700;
+}
+#tiredemande3{
+	text-transform:uppercase;
+	font-weight:bold;
+	color:#D4553A;
 }
 /*Lister RDV*/

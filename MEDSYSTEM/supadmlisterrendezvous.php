@@ -186,16 +186,21 @@ ul.tab li a:focus, .active {background-color: #DDD;}
 			   </ul>
 
 				<div id="London" class="tabcontent">
-				  <h4>Lundi 7 Mai 2018</h4>
+				  <h4 style="text-transform:uppercase;">
+				  <?php
+					setlocale(LC_TIME,"fr_FR.UTF-8","fra"); 
+					echo strftime("%A %d %B %Y ", $_SERVER['REQUEST_TIME']); 
+				  ?>
+				  </h4>
 				 <div class="row">
 				 				  <?php
 				            include("bd/connect.php");
-				            $totalrdv = $conbd->query("SELECT * FROM rendezvous WHERE Etatrdv='Valide'");
+				            $totalrdv = $conbd->query("SELECT * FROM rendezvous WHERE Etatrdv='Valide' AND Annulerrdv='Non'");
 							$totaledemande = $totalrdv->rowcount();
 				                ?>	
                 <div class="card">
                   <div class="card-header">
-                    <h3 class="card-title"><b> <?php echo $totaledemande; ?></b> Rendez-vous</h3>
+                    <h3 id="tiredemande1" class="card-title"><b> <?php echo $totaledemande; ?></b> Rendez-vous</h3>
                   </div>
                   <div class="table-responsive">
                     <table class="table card-table table-vcenter text-nowrap">
@@ -215,8 +220,7 @@ ul.tab li a:focus, .active {background-color: #DDD;}
                       <tbody>
 						 <?php
 							include("bd/connect.php");
-						 // $req=$conbd->query("SELECT * FROM rendezvous WHERE Etatrdv='Valide' ORDER BY idRDV ASC");
-						   $req=$conbd->query("SELECT * FROM rendezvous WHERE Etatrdv='Valide' ORDER BY idRDV ASC");
+						   $req=$conbd->query("SELECT * FROM rendezvous WHERE Etatrdv='Valide' AND Annulerrdv='Non' ORDER BY idRDV ASC");
 						   while($don=$req->fetch()){
                         ?>			
                         <tr>
@@ -256,7 +260,7 @@ ul.tab li a:focus, .active {background-color: #DDD;}
 				                ?>	
                 <div class="card">
                   <div class="card-header">
-                    <h3 class="card-title"><b> <?php echo $totaledemande; ?></b> Demande De Rendez-vous</h3>
+                    <h3 id="tiredemande2" class="card-title"><b> <?php echo $totaledemande; ?></b> Demande De Rendez-vous</h3>
                   </div>
                   <div class="table-responsive">
                     <table class="table card-table table-vcenter text-nowrap">
@@ -276,7 +280,6 @@ ul.tab li a:focus, .active {background-color: #DDD;}
                       <tbody>
 						 <?php
 							include("bd/connect.php");
-						 // $req=$conbd->query("SELECT * FROM rendezvous WHERE Etatrdv='Demande' ORDER BY idRDV ASC");
 						   $req=$conbd->query("SELECT * FROM rendezvous WHERE Etatrdv='Demande' ORDER BY idRDV ASC");
 						   while($don=$req->fetch()){
                         ?>			
@@ -306,12 +309,74 @@ ul.tab li a:focus, .active {background-color: #DDD;}
 						 ?>
                       </tbody>
                     </table>
-                  </div>
+                  </div>				  
                 </div>
 			   </div> 
+			   
+			   <br>
+			   
+			<div class="row">
+				 				  <?php
+				            include("bd/connect.php");
+				            $totalrdv = $conbd->query("SELECT * FROM rendezvous WHERE Etatrdv='Demande' AND Annulerrdv='Oui'");
+							$totaledemande = $totalrdv->rowcount();
+				                ?>	
+                <div class="card">
+                  <div class="card-header">
+                    <h3 id="tiredemande3" class="card-title"><b> <?php echo $totaledemande; ?></b> Demande Annuler</h3>
+                  </div>
+                  <div class="table-responsive">
+                    <table class="table card-table table-vcenter text-nowrap">
+                      <thead>
+                        <tr>
+                          <th class="w-1">No.</th>
+                          <th>Nom</th>
+                          <th>Prenom</th>
+                          <th>Telephone</th>
+                          <th>Email</th>
+                          <th>Departement</th>
+                          <th>Site</th>
+                          <th></th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+						 <?php
+							include("bd/connect.php");
+						   $req=$conbd->query("SELECT * FROM rendezvous WHERE Etatrdv='Demande' AND Annulerrdv='Oui' ORDER BY idRDV ASC");
+						   while($don=$req->fetch()){
+                        ?>			
+                        <tr>
+                          <td><span class="text-muted">  <span class="status-icon bg-danger"></span> <?= $don['idRDV'] ?></span></td>
+                          <td><a href="invoice.html" class="text-inherit"><?= $don['nomrdv'] ?></a></td>
+                          <td>
+                            <?= $don['prenomrdv'] ?>
+                          </td>
+                          <td>
+                            <?= $don['telephonerdv'] ?>
+                          </td>
+                          <td>
+                            <?= $don['mailrdv'] ?>
+                          </td>
+                          <td>
+                            <?= $don['Departementrdv'] ?>
+                          </td>
+                          <td><?= $don['siterdv'] ?></td>
+                          <td class="text-right">
+                            <a href="supadmetatrendezvous.php?idRDV=<?php echo $don['idRDV']; ?>" id="btnvaliderdv2" class="btn btn-secondary btn-sm">Validé</a>
+                          </td>
+                        </tr>
+						 <?php 
+						 } 
+						 
+						 ?>
+                      </tbody>
+                    </table>
+                  </div>				  
+                </div>
+			   </div> 			   
 			</div>
 			</div>
-			
 			
 		</div> 
       </div>

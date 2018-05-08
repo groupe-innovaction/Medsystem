@@ -9,6 +9,7 @@ if(isset($_POST['submitrdv'])){
 	$Departementrdv=htmlspecialchars($_POST['Departementrdv']);
 	
 	$Etatrdv="Demande";
+	$Annulerrdv="Non";
 	$mailrdv=htmlspecialchars($_POST['mailrdv']);
 	$sexerdv=htmlspecialchars($_POST['sexerdv']);
 	$Symptomesrdv=htmlspecialchars($_POST['Symptomesrdv']);
@@ -21,8 +22,8 @@ if(isset($_POST['submitrdv'])){
 		if(filter_var($mailrdv, FILTER_VALIDATE_EMAIL)){
 			
 			
-		 $req=$conbd->prepare("INSERT INTO rendezvous(nomrdv,prenomrdv,telephonerdv,daternaissancerdv,Departementrdv,Etatrdv,mailrdv,sexerdv,siterdv,Symptomesrdv) VALUES(?,?,?,?,?,?,?,?,?,?)");	
-		 $req->execute(array($nomrdv,$prenomrdv,$telephonerdv,$daternaissancerdv,$Departementrdv,$Etatrdv,$mailrdv,$sexerdv,$siterdv,$Symptomesrdv));
+		 $req=$conbd->prepare("INSERT INTO rendezvous(nomrdv,prenomrdv,telephonerdv,daternaissancerdv,Annulerrdv,Departementrdv,Etatrdv,mailrdv,sexerdv,siterdv,Symptomesrdv) VALUES(?,?,?,?,?,?,?,?,?,?,?)");	
+		 $req->execute(array($nomrdv,$prenomrdv,$telephonerdv,$daternaissancerdv,$Annulerrdv,$Departementrdv,$Etatrdv,$mailrdv,$sexerdv,$siterdv,$Symptomesrdv));
 		 if($req){
 			 $rdvcorrect="Demande De Rendez-vous Valide Nous Vous Contacterons Sous Peu...";
 		 }else{
