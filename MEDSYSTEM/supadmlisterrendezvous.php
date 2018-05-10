@@ -220,7 +220,7 @@ ul.tab li a:focus, .active {background-color: #DDD;}
                       <tbody>
 						 <?php
 							include("bd/connect.php");
-						   $req=$conbd->query("SELECT * FROM rendezvous WHERE Etatrdv='Valide' AND Annulerrdv='Non' ORDER BY idRDV ASC");
+						   $req=$conbd->query("SELECT * FROM rendezvous WHERE Etatrdv='Valide' AND Annulerrdv='Non' ORDER BY idRDV DESC");
 						   while($don=$req->fetch()){
                         ?>			
                         <tr>
@@ -255,12 +255,12 @@ ul.tab li a:focus, .active {background-color: #DDD;}
 			<div class="row">
 				 				  <?php
 				            include("bd/connect.php");
-				            $totalrdv = $conbd->query("SELECT * FROM rendezvous WHERE Etatrdv='Demande'");
+				            $totalrdv = $conbd->query("SELECT * FROM rendezvous WHERE Etatrdv='Demande' AND Annulerrdv ='Non' ORDER BY idRDV ASC");
 							$totaledemande = $totalrdv->rowcount();
 				                ?>	
                 <div class="card">
                   <div class="card-header">
-                    <h3 id="tiredemande2" class="card-title"><b> <?php echo $totaledemande; ?></b> Demande De Rendez-vous</h3>
+                    <h3 id="tiredemande2" class="card-title"><b> <?php echo $totaledemande; ?></b> Demande(s) De Rendez-vous</h3>
                   </div>
                   <div class="table-responsive">
                     <table class="table card-table table-vcenter text-nowrap">
@@ -280,7 +280,7 @@ ul.tab li a:focus, .active {background-color: #DDD;}
                       <tbody>
 						 <?php
 							include("bd/connect.php");
-						   $req=$conbd->query("SELECT * FROM rendezvous WHERE Etatrdv='Demande' ORDER BY idRDV ASC");
+						   $req=$conbd->query("SELECT * FROM rendezvous WHERE Etatrdv='Demande' AND Annulerrdv ='Non' ORDER BY idRDV ASC");
 						   while($don=$req->fetch()){
                         ?>			
                         <tr>
@@ -318,12 +318,12 @@ ul.tab li a:focus, .active {background-color: #DDD;}
 			<div class="row">
 				 				  <?php
 				            include("bd/connect.php");
-				            $totalrdv = $conbd->query("SELECT * FROM rendezvous WHERE Etatrdv='Demande' AND Annulerrdv='Oui'");
+				            $totalrdv = $conbd->query("SELECT * FROM rendezvous WHERE Annulerrdv = 'Oui' ORDER BY idRDV ASC");
 							$totaledemande = $totalrdv->rowcount();
 				                ?>	
-                <div class="card">
+                <form class="card" method="POST">
                   <div class="card-header">
-                    <h3 id="tiredemande3" class="card-title"><b> <?php echo $totaledemande; ?></b> Demande Annuler</h3>
+                    <h3 id="tiredemande3" class="card-title"><b> <?php echo $totaledemande; ?></b> Demande(s) Annuler</h3>
                   </div>
                   <div class="table-responsive">
                     <table class="table card-table table-vcenter text-nowrap">
@@ -343,7 +343,7 @@ ul.tab li a:focus, .active {background-color: #DDD;}
                       <tbody>
 						 <?php
 							include("bd/connect.php");
-						   $req=$conbd->query("SELECT * FROM rendezvous WHERE Etatrdv='Demande' AND Annulerrdv='Oui' ORDER BY idRDV ASC");
+						   $req=$conbd->query("SELECT * FROM rendezvous WHERE Annulerrdv = 'Oui' ORDER BY idRDV ASC");
 						   while($don=$req->fetch()){
                         ?>			
                         <tr>
@@ -363,7 +363,8 @@ ul.tab li a:focus, .active {background-color: #DDD;}
                           </td>
                           <td><?= $don['siterdv'] ?></td>
                           <td class="text-right">
-                            <a href="supadmetatrendezvous.php?idRDV=<?php echo $don['idRDV']; ?>" id="btnvaliderdv2" class="btn btn-secondary btn-sm">Validé</a>
+						  <a href="supadmetatrendezvous.php?idRDV=<?php echo $don['idRDV']; ?>" id="btnvaliderdv2" class="btn btn-secondary btn-sm">Rajoutée</a>
+						<!-- <button type="submit" name="btnRajouter"  class="btn btn-secondary btn-sm"></button> -->
                           </td>
                         </tr>
 						 <?php 
@@ -373,7 +374,7 @@ ul.tab li a:focus, .active {background-color: #DDD;}
                       </tbody>
                     </table>
                   </div>				  
-                </div>
+                </form>
 			   </div> 			   
 			</div>
 			</div>

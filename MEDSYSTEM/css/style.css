@@ -483,6 +483,15 @@ margin-bottom:15px;
 	border-radius:3px;
 	float:right;
 }
+#Rajouterrdv button{
+	border:none;
+	text-transform:uppercase;
+	background-color:#70dc70;
+	color:#FFF;
+	border-radius:0px;
+	border-radius:3px;
+	float:right;
+}
 .partievaliderrdv p{
 text-align:center;
 width:100%;
@@ -498,6 +507,16 @@ text-align:center;
 width:100%;
 text-transform:uppercase;
 color:#D4553A;
+font-size:16px;
+font-weight:bold;
+margin-top:15px;
+margin-left:20px;	
+}
+.partierajouterrdv p{
+text-align:center;
+width:100%;
+text-transform:uppercase;
+color:#70dc70;
 font-size:16px;
 font-weight:bold;
 margin-top:15px;

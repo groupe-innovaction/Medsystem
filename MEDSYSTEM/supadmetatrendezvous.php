@@ -257,29 +257,65 @@ if(Authsuperadmin::isLogged()){
 			  </span>
 			  <span class="messageerreurrdv">
 				<?php if(isset($repAnnuler)){ echo $repAnnuler; } ?>
+			  </span>
+			  <span class="messageerreurrdv">
+				<?php if(isset($repDejaAnnuler)){ echo $repDejaAnnuler; } ?>
 			  </span>			  
 		    <form class="card" method="POST">
 				 <div class="partieannulerrdv">
-					<p>Annuler La Demande ?</p>
+					<p>Annuler une Demande </p>
 				 </div>				
                    
 				   <div class="radiordv">
-                         <div class="custom-controls-stacked">
-                          <label class="custom-control custom-radio">
-                            <input type="radio" class="custom-control-input" name="radiordv1" value="Non">
-                            <div class="custom-control-label">Non</div>
-                          </label>
-                          <label class="custom-control custom-radio">
-                            <input type="radio" class="custom-control-input" name="radiordv1" value="Oui">
-                            <div class="custom-control-label">Oui</div>
-                          </label>
-                        </div>
+                     <div class="custom-controls-stacked">
+                        <label class="custom-switch">
+                          <input type="checkbox" name="radiordv1" value="Oui" class="custom-switch-input">
+                          <span class="custom-switch-indicator"></span>
+                          <span class="custom-switch-description">Oui Je Veux Annuler Ma Demande</span>
+                        </label>						  
+                     </div>
+					 <br>
 				   </div>		
 						
 				<div  id="Annulerrdv" class="card-footer text-center">
                   <button type="submit" name="annulersubmit" class="btn btn-primary"> <i class="fe fe-x-circle"> </i> Annuler la Demande</button> 
                 </div>			   
-		    </form>			
+		    </form>	
+
+			
+            <?php include("Traitement/etatrendezvoustraitementRajouter.php"); ?>
+			  <span class="messageerreurrdv2">
+				<?php if(isset($rdvRajouter)){ echo $rdvRajouter; } ?>
+			  </span>			
+			  <span class="messageerreurrdv">
+				<?php if(isset($rdvRajouterEchec)){ echo $rdvRajouterEchec; } ?>
+			  </span>
+			  <span class="messageerreurrdv">
+				<?php if(isset($repRajouter)){ echo $repRajouter; } ?>
+			  </span>
+			  <span class="messageerreurrdv">
+				<?php if(isset($repDejaRajouter)){ echo $repDejaRajouter; } ?>
+			  </span>			
+		    <form class="card" method="POST">
+				 <div class="partierajouterrdv">
+					<p>Rajouter une Demande </p>
+				 </div>				
+                   
+				   <div class="radiordv">
+                     <div class="custom-controls-stacked">
+                        <label class="custom-switch">
+                          <input type="checkbox" name="radiordv2" value="Non" class="custom-switch-input">
+                          <span class="custom-switch-indicator"></span>
+                          <span class="custom-switch-description">Oui Je Veux Rajouter Ma Demande</span>
+                        </label>						  
+                     </div>
+					 <br>
+				   </div>		
+						
+				<div  id="Rajouterrdv" class="card-footer text-center">
+                  <button type="submit" name="Rajoutersubmit" class="btn btn-primary"> <i class="fe fe-plus"> </i>Rajouter la Demande</button> 
+                </div>			   
+		    </form>				  
 		   </div> 
 		 </div> 
 		</div> 

@@ -3,21 +3,33 @@
 
 if(isset($_POST['annulersubmit'])){
 	if(!empty($_POST['radiordv1'])){
-	$radiordv1=$_POST['radiordv1'];	
-	$req=$conbd->prepare('UPDATE rendezvous SET Annulerrdv="'.$radiordv1.'" WHERE idRDV = "'.$mon_idRDV.'"');
-	$req->execute();
+	$radiordv1=$_POST['radiordv1'];
 	
-	  if($req){
-		  $rdvAnnuler="Operation Effectuée";
+    $a="Oui";
+	$b="Demande";
+
+	    $req=$conbd->query('SELECT * FROM rendezvous WHERE Annulerrdv="'.$a.'" AND Etatrdv="'.$b.'" AND idRDV = "'.$mon_idRDV.'"');         
+        $valeurUsername=$req->rowcount();   
+		if($valeurUsername == 0){
+			
+	$rep=$conbd->prepare('UPDATE rendezvous SET Annulerrdv="'.$radiordv1.'" WHERE idRDV = "'.$mon_idRDV.'"');
+	$rep->execute();
+	
+	  	  if($rep){
+		  $rdvAnnuler="Demande Annuler Avec succès";
 	  }else{
 		  $rdvEchec="Echec";
-	  }
+	  }	
 	  
-	  
+		}else{
+		 $repDejaAnnuler = "Cette Demande à  été dejà  annulée"; 	
+		}
+
 	}else{
 		$repAnnuler="Aucune Action";
 	}
-
 }
-
 ?>
+
+
+
