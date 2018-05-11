@@ -105,9 +105,9 @@ if(Authsuperadmin::isLogged()){
 						 <li><a href='superadminvoirutilisateurs.php'>Lister Utilisateurs</a></li>
 					  </ul> 
 				   </li>
-				   <li><a href='#'> <i class="fe fe-folder"> </i> Dossiers</a>
+				   <li><a href=''> <i class="fe fe-folder"> </i> Dossiers</a>
 					  <ul>
-						 <li><a href=''>Creer Dossier</a></li>
+						 <li><a href='supadmcreationdossiers.php'>Creer Dossier</a></li>
 						 <li><a href=''>Voir Dossier</a></li>
 					  </ul>
 				   </li>
@@ -115,7 +115,6 @@ if(Authsuperadmin::isLogged()){
 					   <ul>
 						 <li><a href='supadmprendrerendezvous.php'>Prendre Rendez-vous</a></li>
 						 <li><a href=''>Lister Rendez-vous</a></li>
-						 <li><a href=''>Annuler Rendez-vous</a></li>
 					  </ul>  
 				   </li>
 				   <li><a href=''> <i class="fe fe-layers"> </i> Pages Web</a>
@@ -188,8 +187,9 @@ ul.tab li a:focus, .active {background-color: #DDD;}
 				<div id="London" class="tabcontent">
 				  <h4 style="text-transform:uppercase;">
 				  <?php
-					setlocale(LC_TIME,"fr_FR.UTF-8","fra"); 
-					echo strftime("%A %d %B %Y ", $_SERVER['REQUEST_TIME']); 
+        date_default_timezone_set('America/Port-au-Prince');
+		$date = date('d F Y');
+		Print("$date");
 				  ?>
 				  </h4>
 				 <div class="row">

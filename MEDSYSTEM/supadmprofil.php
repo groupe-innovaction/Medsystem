@@ -105,9 +105,9 @@ if(Authsuperadmin::isLogged()){
 						 <li><a href='superadminvoirutilisateurs.php'>Lister Utilisateurs</a></li>
 					  </ul> 
 				   </li>
-				   <li class='active'><a href='#'> <i class="fe fe-folder"> </i> Dossiers</a>
+				   <li><a href=''> <i class="fe fe-folder"> </i> Dossiers</a>
 					  <ul>
-						 <li><a href=''>Creer Dossier</a></li>
+						 <li><a href='supadmcreationdossiers.php'>Creer Dossier</a></li>
 						 <li><a href=''>Voir Dossier</a></li>
 					  </ul>
 				   </li>
@@ -115,7 +115,6 @@ if(Authsuperadmin::isLogged()){
 					   <ul>
 						 <li><a href='supadmprendrerendezvous.php'>Prendre Rendez-vous</a></li>
 						 <li><a href='supadmlisterrendezvous.php'>Lister Rendez-vous</a></li>
-						 <li><a href=''>Annuler Rendez-vous</a></li>
 					  </ul>  
 				   </li>
 				   <li><a href=''> <i class="fe fe-layers"> </i> Pages Web</a>
