@@ -273,7 +273,7 @@ if(Authsuperadmin::isLogged()){
                         <label class="custom-switch">
                           <input type="checkbox" name="radiordv1" value="Oui" class="custom-switch-input">
                           <span class="custom-switch-indicator"></span>
-                          <span class="custom-switch-description">Oui Je Veux Annuler Ma Demande</span>
+                          <span class="custom-switch-description">Oui Je Veux Annuler Cette Demande</span>
                         </label>						  
                      </div>
 					 <br>
@@ -308,7 +308,7 @@ if(Authsuperadmin::isLogged()){
                         <label class="custom-switch">
                           <input type="checkbox" name="radiordv2" value="Non" class="custom-switch-input">
                           <span class="custom-switch-indicator"></span>
-                          <span class="custom-switch-description">Oui Je Veux Rajouter Ma Demande</span>
+                          <span class="custom-switch-description">Oui Je Veux Rajouter Cette Demande</span>
                         </label>						  
                      </div>
 					 <br>

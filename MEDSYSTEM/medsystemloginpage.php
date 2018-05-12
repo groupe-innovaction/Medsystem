@@ -24,10 +24,12 @@ if(!empty($_POST['username']) && !empty($_POST['password'])){
                     $photosupadm=$don['photoutilisateur'];
                     $prenomsupadm=$don['prenom'];
                     $fonctionsupadm=$don['fonction'];
+                    $nomsupadm=$don['nom'];
 
                $_SESSION['var1']=$photosupadm;
                $_SESSION['var2']=$prenomsupadm;
                $_SESSION['var3']=$fonctionsupadm;
+               $_SESSION['var4']=$nomsupadm;
            }
       }   
 	    $requser = $conbd->prepare("SELECT * FROM logintable WHERE  username= ? AND password= ? AND fonction='infirmiere' AND statut !='Bloquer'"); 

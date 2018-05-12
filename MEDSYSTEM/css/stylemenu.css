@@ -155,6 +155,8 @@
   color: #FFF;
   text-transform:uppercase;
   background: #0cc68f;
+  border-bottom-left-radius:7px;
+  border-bottom-right-radius:7px;
 }
 #cssmenu ul ul li:last-child > a,
 #cssmenu ul ul li.last-item > a {

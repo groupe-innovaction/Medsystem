@@ -159,6 +159,11 @@ if(Authsuperadmin::isLogged()){
                   </div>
                 </div>
               </div>
+          <?php
+          include("bd/connect.php");
+          $totaleDossier = $conbd->query('SELECT * FROM dossiers');
+              $totaleDossierCreer = $totaleDossier->rowcount();
+          ?>              
               <div class="col-sm-6 col-lg-3">
                 <div class="card p-3">
                   <div class="d-flex align-items-center">
@@ -166,7 +171,7 @@ if(Authsuperadmin::isLogged()){
                       <i class="fe fe-folder"></i>
                     </span>
                     <div>
-                      <h4 class="m-0"><a>78</a></h4>
+                      <h4 class="m-0"><a><?php echo $totaleDossierCreer; ?></a></h4>
                       <small class="text-muted">Dossiers</small>
                     </div>
                   </div>

@@ -134,16 +134,37 @@ if(Authsuperadmin::isLogged()){
 	    <div class="container">
 		    <br>
             <div class="positionadm">
-              <p> <a href="superadminpage.php"><i class="fe fe-home"> </i> Acceuil </a> <i class="fe fe-chevron-right"> </i> Creation De Dossier </p>
+              <p> <a href="superadminpage.php"><i class="fe fe-home"> </i> Acceuil </a> <i class="fe fe-chevron-right"> </i> Création De Dossier </p>
             </div>
+			<div class="rechercheDossier">
+				   <div class="col-md-12">
+					 <div class="col-sm-9 barecherche container">
+				      <center>
+				       <input type="text" name="search_text" id="search_text" placeholder="RECHERCHER DOSSIER"/>
+					  </center>
+					 </div>  
+             
+                     <div class="row">
+                      <center> 					   
+				        <div class="reponserecherche" id="resultRechercheDossier"></div>
+					  </center>
+					 </div>				  
+                   </div>			
+			</div>
 			
 	    <div class="row">
 		  <div class="col-md-10">
+		      <div class="dossiertitre">
+			   <p> <i class="fe fe-folder"></i> Création De Dossier</p>
+			  </div>
+			  
+			  <?php include("Traitement/supadmdossierstraitement.php") ?>
+			  
               <form method="POST" action="" enctype="multipart/form-data">
 			   <div class="card">
                 <div class="card-header">
-                  <div class="ajttete">
-                    <p>Information Persnonnelle</p>
+                  <div class="dossiertete">
+                    <p>Informations Persnonnelles</p>
                   </div>
                 </div>
                 <div class="card-body">
@@ -151,44 +172,44 @@ if(Authsuperadmin::isLogged()){
                     <div class="col-sm-6 col-md-6">
                       <div class="form-group">
                         <label class="form-label">Nom <span class="obligatoire">*</span></label>
-                        <input type="text" name="nom" class="form-control" placeholder="Enter Nom" value="">
+                        <input type="text" name="nomDossier" class="form-control" placeholder="Enter Nom" value="">
                       </div>
                     </div>
                     <div class="col-sm-6 col-md-6">
                       <div class="form-group">
                         <label class="form-label">Prenom <span class="obligatoire">*</span></label>
-                        <input type="text" name="prenom" class="form-control" placeholder="Entrer Prenom" value="">
+                        <input type="text" name="prenomDossier" class="form-control" placeholder="Entrer Prenom" value="">
                       </div>
                     </div>
                     <div class="col-sm-6 col-md-6">
                       <div class="form-group">
                         <label class="form-label">Date De Naissance <span class="obligatoire">*</span></label>
-                        <input type="date" name="datedenaissance" class="form-control" placeholder="Entrer Date De Naissance" value="">
+                        <input type="date" name="datedenaissanceDossier" class="form-control" placeholder="Entrer Date De Naissance" value="">
                       </div>
                     </div>
                     <div class="col-sm-6 col-md-6">
                       <div class="form-group">
                         <label class="form-label">Lieu De Naissance <span class="obligatoire">*</span></label>
-                        <input type="text" name="lieudenaissance" class="form-control" placeholder="Entrer Lieu De Naissance"
+                        <input type="text" name="lieudenaissanceDossier" class="form-control" placeholder="Entrer Lieu De Naissance"
                         value="">                      
                       </div>
                     </div>
                     <div class="col-sm-6 col-md-6">
                       <div class="form-group">
                         <label class="form-label">Adresse <span class="obligatoire">*</span></label>
-                        <input type="text" name="adressedossier" class="form-control" placeholder="Entrer Adresse" value="">
+                        <input type="text" name="adressedossierDossier" class="form-control" placeholder="Entrer Adresse" value="">
                       </div>
                     </div>
                     <div class="col-sm-6 col-md-6">
                       <div class="form-group">
                         <label class="form-label">Telephone <span class="obligatoire">*</span></label>
-                        <input type="tel" name="telephonedossier" class="form-control" placeholder="Entrer Telephone" value="">
+                        <input type="tel" name="telephonedossierDossier" class="form-control" placeholder="Entrer Telephone" value="">
                       </div>
                     </div>
                     <div class="col-sm-6 col-md-6">
                       <div class="form-group">
                         <label class="form-label">Situation Familiale <span class="obligatoire">*</span></label>
-                        <select name="statutm" class="form-control">
+                        <select name="statutmDossier" class="form-control">
                           <option value=""></option>
                           <option value="Celibataire">Celibataire</option>
                           <option value="Marié (e)">Marié (e)</option>
@@ -199,20 +220,20 @@ if(Authsuperadmin::isLogged()){
                     <div class="col-sm-6 col-md-6">
                       <div class="form-group">
                         <label class="form-label">Profession <span class="obligatoire">*</span></label>
-                        <input type="text" name="profession" class="form-control" placeholder="Entrer Profession" value="">                       
+                        <input type="text" name="professionDossier" class="form-control" placeholder="Entrer Profession" value="">                       
                       </div>
                     </div>
                     <div class="col-sm-6 col-md-6">
                       <div class="form-group">
                         <label class="form-label">Personne De Reference<span class="obligatoire">*</span></label>
-                        <input type="text" name="reference" class="form-control" placeholder="Entrer Personne De Reference" value="">
+                        <input type="text" name="referenceDossier" class="form-control" placeholder="Entrer Personne De Reference" value="">
 
                       </div>
                     </div>                    
                     <div class="col-sm-6 col-md-6">
                       <div class="form-group">
-                        <label class="form-label">Numero Assurance <span class="obligatoire">*</span></label>
-                        <input type="text" name="telephone1" class="form-control" placeholder="Entrer Numero Assurance" value="">
+                        <label class="form-label">Numero Telephone <span class="obligatoire">*</span></label>
+                        <input type="tel" name="telephonerferenceDossier" class="form-control" placeholder="Entrer Numero De La Personne Référence" value="">
                       </div>
                     </div>                   
                   </div>
@@ -221,7 +242,7 @@ if(Authsuperadmin::isLogged()){
 
 			   <div class="card">
                 <div class="card-header">
-                  <div class="ajttete">
+                  <div class="dossiertete">
                     <p>Antécédents</p>
                   </div>
                 </div>
@@ -229,25 +250,25 @@ if(Authsuperadmin::isLogged()){
                   <div class="row">
                     <div class="col-sm-6 col-md-6">
                       <div class="form-group">
-                        <label class="form-label">Antécédents Médicaux <span class="obligatoire">*</span></label>
+                        <label class="form-label">Antécédents Médicaux</label>
                         <input type="text" name="antmedicaux" class="form-control" placeholder="Enter Antécédents Médicaux" value="">
                       </div>
                     </div>
                     <div class="col-sm-6 col-md-6">
                       <div class="form-group">
-                        <label class="form-label">Antécédents Churigicaux <span class="obligatoire">*</span></label>
+                        <label class="form-label">Antécédents Churigicaux</label>
                         <input type="text" name="antchurigicaux" class="form-control" placeholder="Entrer Antécédents Churigicaux" value="">
                       </div>
                     </div>
                     <div class="col-sm-6 col-md-6">
                       <div class="form-group">
-                        <label class="form-label">Antécédents Familiaux <span class="obligatoire">*</span></label>
+                        <label class="form-label">Antécédents Familiaux</label>
                         <input type="text" name="antecedentf" class="form-control" placeholder="Entrer Antécédents Familiaux" value="">
                       </div>
                     </div>
                     <div class="col-sm-6 col-md-6">
                       <div class="form-group">
-                        <label class="form-label">Allergies Et Intolérence <span class="obligatoire">*</span></label>
+                        <label class="form-label">Allergies Et Intolérence</label>
                         <input type="text" name="allergies" class="form-control" placeholder="Entrer Allergies Et Intolérence"
                         value="">                      
                       </div>
@@ -258,7 +279,7 @@ if(Authsuperadmin::isLogged()){
 
 			   <div class="card">
                 <div class="card-header">
-                  <div class="ajttete">
+                  <div class="dossiertete">
                     <p>Biométrie</p>
                   </div>
                 </div>
@@ -266,32 +287,45 @@ if(Authsuperadmin::isLogged()){
                   <div class="row">
                     <div class="col-sm-6 col-md-6">
                       <div class="form-group">
-                        <label class="form-label">Taille<span class="obligatoire">*</span></label>
+                        <label class="form-label">Taille</label>
                         <input type="text" name="taille" class="form-control" placeholder="Enter Taille" value="">
                       </div>
                     </div>
                     <div class="col-sm-6 col-md-6">
                       <div class="form-group">
-                        <label class="form-label">Poids <span class="obligatoire">*</span></label>
+                        <label class="form-label">Poids</label>
                         <input type="text" name="poids" class="form-control" placeholder="Entrer Poids" value="">
                       </div>
                     </div>
                     <div class="col-sm-6 col-md-6">
                       <div class="form-group">
-                        <label class="form-label">Groupe Sanguin <span class="obligatoire">*</span></label>
-                        <input type="text" name="groupesanguin" class="form-control" placeholder="Entrer Groupe Sanguin" value="">
+                        <label class="form-label">Groupe Sanguin</label>
+                        <select name="groupesanguin" class="form-control">
+                          <option value=""></option>
+                          <option value="A+">A+</option>
+                          <option value="A-">A-</option>
+                          <option value="B+">B+</option>
+						  <option value="B-">B-</option>
+						  <option value="AB+">AB+</option>
+						  <option value="AB-">AB-</option>
+						  <option value="O+">O+</option>
+						  <option value="O-">O-</option>
+                        </select>                     
                       </div>
-                    </div>
+                    </div> 					
                     <div class="col-sm-6 col-md-6">
                       <div class="form-group">
-                        <label class="form-label">Indicateurs Biologique <span class="obligatoire">*</span></label>
-                        <input type="text" name="indicateursbiologique" size="10" class="form-control" placeholder="Entrer Indicateurs Biologique"
+                        <label class="form-label">Indicateurs Biologique</label>
+                        <input type="text" name="indicateursbiologique" class="form-control" placeholder="Entrer Indicateurs Biologique"
                         value="">    
                       </div>
                     </div>                 
                   </div>
                 </div>
-			  </div>			  
+			  </div>
+                <div class="card-footer" id="btndossier">
+                  <button type="submit" name="submitdossier" class="btn btn-primary"> <i class="fe fe-plus-circle"></i> Créer Dossier</button>
+                </div>			  
            </form>		  
 		  </div>
 		  <div class="col-md-2">
@@ -306,6 +340,36 @@ if(Authsuperadmin::isLogged()){
     </div>
 	
   </body>
+ <script>
+$(document).ready(function(){
+
+ load_data();
+
+ function load_data(query)
+ {
+  $.ajax({
+   url:"Traitement/rechercherDossiers.php",
+   method:"POST",
+   data:{query:query},
+   success:function(data)
+   {
+    $('#resultRechercheDossier').html(data);
+   }
+  });
+ }
+ $('#search_text').keyup(function(){
+  var search = $(this).val();
+  if(search != '')
+  {
+   load_data(search);
+  }
+  else
+  {
+   load_data();
+  }
+ });
+});
+</script> 
 </html>
  
 		

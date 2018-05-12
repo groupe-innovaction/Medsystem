@@ -145,7 +145,7 @@ if(Authsuperadmin::isLogged()){
 				        <div class="reponserecherche" id="resultindex"></div>
 					  </center>
 					 </div>				  
-                   </div>	
+            </div>	
 				   
             <div class="row row-cards">
 
@@ -263,7 +263,7 @@ $(document).ready(function(){
  function load_data(query)
  {
   $.ajax({
-   url:"rechercherutilisateurs.php",
+   url:"Traitement/rechercherutilisateurs.php",
    method:"POST",
    data:{query:query},
    success:function(data)
