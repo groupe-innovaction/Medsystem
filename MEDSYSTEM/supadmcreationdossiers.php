@@ -110,7 +110,7 @@ if(Authsuperadmin::isLogged()){
 				   <li><a href=''> <i class="fe fe-folder"> </i> Dossiers</a>
 					  <ul>
 						 <li><a href='supadmcreationdossiers.php'>Creer Dossier</a></li>
-						 <li><a href=''>Voir Dossier</a></li>
+						 <li><a href='supadmrechercherdossier.php'>Rechercher Dossier</a></li>
 					  </ul>
 				   </li>
 				   <li><a href='#'> <i class="fe fe-folder-plus"> </i> Rendez-vous</a>
@@ -135,23 +135,7 @@ if(Authsuperadmin::isLogged()){
 		    <br>
             <div class="positionadm">
               <p> <a href="superadminpage.php"><i class="fe fe-home"> </i> Acceuil </a> <i class="fe fe-chevron-right"> </i> Création De Dossier </p>
-            </div>
-			<div class="rechercheDossier">
-				   <div class="col-md-12">
-					 <div class="col-sm-9 barecherche container">
-				      <center>
-				       <input type="text" name="search_text" id="search_text" placeholder="RECHERCHER DOSSIER"/>
-					  </center>
-					 </div>  
-             
-                     <div class="row">
-                      <center> 					   
-				        <div class="reponserecherche" id="resultRechercheDossier"></div>
-					  </center>
-					 </div>				  
-                   </div>			
-			</div>
-			
+            </div>			
 	    <div class="row">
 		  <div class="col-md-10">
 		      <div class="dossiertitre">
@@ -164,7 +148,7 @@ if(Authsuperadmin::isLogged()){
 			   <div class="card">
                 <div class="card-header">
                   <div class="dossiertete">
-                    <p>Informations Persnonnelles</p>
+                    <p>Informations Personnelles</p>
                   </div>
                 </div>
                 <div class="card-body">
@@ -197,13 +181,13 @@ if(Authsuperadmin::isLogged()){
                     <div class="col-sm-6 col-md-6">
                       <div class="form-group">
                         <label class="form-label">Adresse <span class="obligatoire">*</span></label>
-                        <input type="text" name="adressedossierDossier" class="form-control" placeholder="Entrer Adresse" value="">
+                        <input type="text" name="adresseDossier" class="form-control" placeholder="Entrer Adresse" value="">
                       </div>
                     </div>
                     <div class="col-sm-6 col-md-6">
                       <div class="form-group">
                         <label class="form-label">Telephone <span class="obligatoire">*</span></label>
-                        <input type="tel" name="telephonedossierDossier" class="form-control" placeholder="Entrer Telephone" value="">
+                        <input type="tel" name="telephoneDossier" class="form-control" placeholder="Entrer Telephone" value="">
                       </div>
                     </div>
                     <div class="col-sm-6 col-md-6">
@@ -340,36 +324,6 @@ if(Authsuperadmin::isLogged()){
     </div>
 	
   </body>
- <script>
-$(document).ready(function(){
-
- load_data();
-
- function load_data(query)
- {
-  $.ajax({
-   url:"Traitement/rechercherDossiers.php",
-   method:"POST",
-   data:{query:query},
-   success:function(data)
-   {
-    $('#resultRechercheDossier').html(data);
-   }
-  });
- }
- $('#search_text').keyup(function(){
-  var search = $(this).val();
-  if(search != '')
-  {
-   load_data(search);
-  }
-  else
-  {
-   load_data();
-  }
- });
-});
-</script> 
 </html>
  
 		

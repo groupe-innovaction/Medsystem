@@ -208,7 +208,10 @@ float: left;
 
 }
 .barprofil0{
-
+	margin-top: -8px;	
+	text-transform: uppercase;
+	font-size: 14px;
+	font-weight: bold;
 }
 .barprofil1{
 	width: 100%;
@@ -559,6 +562,7 @@ color: #faaf40;
 	font-size: 20px;
 	text-transform: uppercase;	
     color: #4A89DC;	
+	text-align:center;
 }
 #btndossier button{
 	width:100%;
@@ -570,7 +574,7 @@ color: #faaf40;
 	margin-bottom:10px;
 }
 .col-sm-9.barecherche input[type="text"]{
-margin-top:2px;	
+margin-top:2.5px;	
 height:45px;
 border-radius:5px;
 border:none; 
@@ -589,4 +593,112 @@ position: absolute;
 z-index: 2;
 color:#900;
 } 
+#ttrDossier span{
+margin-left:20px;
+font-size:20px;
+font-weight:bold;
+text-transform:uppercase;	
+text-overflow:ellipsis; 
+display: block; 
+overflow: hidden; 
+white-space: nowrap; 
+}
+#styletable tr th{
+	width:500px;
+}
+.dossierinfo1 p{
+	font-weight: bold;
+	font-size:16px;
+	text-align:center;
+	margin-top:10px;
+}
+.dossierinfo2 p{
+	font-weight: bold;
+	font-size:16px;
+	margin-left:20px;	
+}
+.dossierImprimer{
+	height:30px;
+	width:100%;
+}
+.dossierImprimer .fe{
+    font-size:20px;
+}
+.dossierImprimer span{ 
+	float:right;
+	font-weight:bold;
+	margin-left:30px;
+	text-transform:uppercase;
+}
+#fixe a{
+      background-color:#4A89DC;
+      border: medium none;
+      color: #FFFFFF;
+      height: 50px;
+      right: 9%;
+      position: fixed;
+      top: 550px;
+      width: 50px;
+	  text-align:center;
+	  line-height:50px;
+	  font-size:22px;
+	  border-radius:10px;
+    }
+#fixe a:hover{
+      text-decoration:none;
+    }
 /*Dossier*/
+/* Style the list */
+ul.tab {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  /*  border: 1px solid #DDD; */
+    background-color: #FFF;
+}
+
+/* Float the list items side by side */
+ul.tab li {float: left;}
+
+/* Style the links inside the list items */
+ul.tab li a {
+    display: inline-block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 17px;
+    color:#faaf40;
+	text-transform:uppercase;
+	font-weight:bold;
+}
+
+/* Change background color of links on hover */
+ul.tab li a:hover {background-color: #DDD;}
+
+/* Create an active/current tablink class */
+ul.tab li a:focus, .active {background-color: #DDD;}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+  /*  border: 1px solid #DDD; */
+    border-top: none;
+}
+::-webkit-scrollbar
+{
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track
+{
+  background: #b8dde2;
+}
+::-webkit-scrollbar-thumb
+{
+  background: #4FC1E9;
+}
+

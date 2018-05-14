@@ -6,8 +6,8 @@ if(isset($_POST['submitdossier'])){
 	$prenomDossier=htmlspecialchars($_POST['prenomDossier']);
 	$datedenaissanceDossier=htmlspecialchars($_POST['datedenaissanceDossier']);
 	$lieudenaissanceDossier=htmlspecialchars($_POST['lieudenaissanceDossier']);
-	$adressedossierDossier=htmlspecialchars($_POST['adressedossierDossier']);
-	$telephonedossierDossier=htmlspecialchars($_POST['telephonedossierDossier']);
+	$adresseDossier=htmlspecialchars($_POST['adresseDossier']);
+	$telephoneDossier=htmlspecialchars($_POST['telephoneDossier']);
 	$statutmDossier=htmlspecialchars($_POST['statutmDossier']);
 	$professionDossier=htmlspecialchars($_POST['professionDossier']);
 	$referenceDossier=htmlspecialchars($_POST['referenceDossier']);
@@ -26,19 +26,19 @@ if(isset($_POST['submitdossier'])){
 
 	
 	if(!empty($_POST['nomDossier']) AND !empty($_POST['prenomDossier']) AND !empty($_POST['datedenaissanceDossier']) AND 
-	!empty($_POST['lieudenaissanceDossier']) AND !empty($_POST['adressedossierDossier']) AND !empty($_POST['telephonedossierDossier']) AND 
+	!empty($_POST['lieudenaissanceDossier']) AND !empty($_POST['adresseDossier']) AND !empty($_POST['telephoneDossier']) AND 
 	!empty($_POST['statutmDossier']) AND !empty($_POST['professionDossier']) AND !empty($_POST['referenceDossier']) AND 
 	!empty($_POST['telephonerferenceDossier'])){
 		
-		 $req=$conbd->prepare("INSERT INTO dossiers(nomDossier,prenomDossier,datedenaissanceDossier,lieudenaissanceDossier,adressedossierDossier,telephonedossierDossier,statutmDossier,professionDossier,referenceDossier,telephonerferenceDossier,antmedicaux,antchurigicaux,antecedentf,allergies,taille,poids,groupesanguin,indicateursbiologique,dateCreationDossier,nomAuteurDossier,prenomAuteurDossier) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");	
-		 $req->execute(array($nomDossier,$prenomDossier,$datedenaissanceDossier,$lieudenaissanceDossier,$adressedossierDossier,$telephonedossierDossier,$statutmDossier,$professionDossier,$referenceDossier,$telephonerferenceDossier,$antmedicaux,$antchurigicaux,$antecedentf,$allergies,$taille,$poids,$groupesanguin,$indicateursbiologique,$dateCreationDossier,$nomAuteurDossier,$prenomAuteurDossier));		
+		 $req=$conbd->prepare("INSERT INTO dossiers(nomDossier,prenomDossier,datedenaissanceDossier,lieudenaissanceDossier,adresseDossier,telephoneDossier,statutmDossier,professionDossier,referenceDossier,telephonerferenceDossier,antmedicaux,antchurigicaux,antecedentf,allergies,taille,poids,groupesanguin,indicateursbiologique,dateCreationDossier,nomAuteurDossier,prenomAuteurDossier) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");	
+		 $req->execute(array($nomDossier,$prenomDossier,$datedenaissanceDossier,$lieudenaissanceDossier,$adresseDossier,$telephoneDossier,$statutmDossier,$professionDossier,$referenceDossier,$telephonerferenceDossier,$antmedicaux,$antchurigicaux,$antecedentf,$allergies,$taille,$poids,$groupesanguin,$indicateursbiologique,$dateCreationDossier,$nomAuteurDossier,$prenomAuteurDossier));		
 		 if($req){
 			 echo"Ooooooooook";
 		 }else{
 			 echo"Noooooooooo";
 		 }
 	}else{
-		echo"Veuillez Completer Tous Les Champs Obligatoire";
+		echo"Les Champs Marques * sont Obligatoires Veuillez Les completer Tous";
 	}		
 }
 

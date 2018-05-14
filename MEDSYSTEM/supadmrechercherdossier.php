@@ -1,3 +1,5 @@
+
+		
 <?php
 session_start();
 require("authsuperadmin.php");
@@ -7,7 +9,6 @@ if(Authsuperadmin::isLogged()){
   header('Location:medsystemloginpage.php');
 }
 ?>
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -15,6 +16,7 @@ if(Authsuperadmin::isLogged()){
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta http-equiv="Content-Language" content="en" />
+	<meta charset="utf-08">
     <meta name="msapplication-TileColor" content="#2d89ef">
     <meta name="theme-color" content="#4188c9">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
@@ -22,7 +24,7 @@ if(Authsuperadmin::isLogged()){
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
-    <title>MEDSYSTEM | VOIR UTILISATEUR</title>
+    <title>MEDSYSTEM | DOSSIER</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,500,500i,600,600i,700,700i&amp;subset=latin-ext">
     <script src="./assets/js/require.min.js"></script>
@@ -38,7 +40,7 @@ if(Authsuperadmin::isLogged()){
     <script src="js/jquery-latest.min.js" type="text/javascript"></script>
     <script src="js/script.js"></script>  
   </head>
-  <body class="">
+  <body>
     <div class="page">
       <div class="page-main">
         <div class="header">
@@ -102,7 +104,7 @@ if(Authsuperadmin::isLogged()){
 				   <li><a href=''> <i class="fe fe-users"> </i> Utilisateurs</a>
 					  <ul>
 						 <li><a href='superadminajouterutilisateurs.php'>Ajouter Utilisateur</a></li>
-						 <li><a href=''>Lister Utilisateurs</a></li>
+						 <li><a href='superadminvoirutilisateurs.php'>Lister Utilisateurs</a></li>
 					  </ul> 
 				   </li>
 				   <li><a href=''> <i class="fe fe-folder"> </i> Dossiers</a>
@@ -126,136 +128,42 @@ if(Authsuperadmin::isLogged()){
 		       </ul>
 		     </div>
 		  </div>
-       </div>	   
-        <div class="page-content">
-          <div class="container">
+       </div>
+	   
+      <div class="">
+	    <div class="container">
+		    <br>
             <div class="positionadm">
-              <p> <a href="superadminpage.php"><i class="fe fe-home"> </i> Acceuil </a> <i class="fe fe-chevron-right"> </i>  Voir Utilisateurs </p>
+              <p> <a href="superadminpage.php"><i class="fe fe-home"> </i> Acceuil </a> <i class="fe fe-chevron-right"> </i> Rechercher Dossier </p>
             </div>
-				
+			<div class="rechercheDossier">
 				   <div class="col-md-12">
-					 <div class="col-sm-9 basmenu container">
+					 <div class="col-sm-9 barecherche container">
 				      <center>
-				       <input type="text" name="search_text" id="search_text" placeholder="RECHERCHER UTILISATEUR"/>
+				       <input type="text" name="search_text" id="search_text" placeholder="RECHERCHER DOSSIER"/>
 					  </center>
 					 </div>  
              
                      <div class="row">
                       <center> 					   
-				        <div class="reponserecherche" id="resultindex"></div>
+				        <div class="reponserecherche" id="resultRechercheDossier"></div>
 					  </center>
 					 </div>				  
-            </div>	
-				   
-            <div class="row row-cards">
+                   </div>			
+			</div>
+			
+	    <div class="row">
 
-<div class="container">
-  <div class="">
-    <div class="row">
-      <div class="col-md-12">
-           <br>
-       <div class="voirtete">
-         <h2>Ouest</h2>
-       </div>  
-
-        <?php
-        include('bd/connect.php');
-       $req=$conbd->query("SELECT * FROM logintable WHERE fonction !='super-administrateur' AND site='ouest' ORDER BY idlogin ASC");
-                    while($don=$req->fetch()){
-                    ?>
- 			<div class="linkvoirutilisateur">	                 
-               <div class="card">
-                 <a href="supadmprofil.php?idlogin=<?php echo $don['idlogin'];?>">
-                  <div class="card-body">
-                    <div class="media">
-                      <span class="avatar avatar-xxl mr-5" style="background-image: url(photo/<?= $don['photoutilisateur'] ?>)"></span>
-                      <div class="media-body">
-                        <h4 class="m-0"><?= $don['prenom'] ?> <b> <?= $don['nom'] ?> </b> </h4>
-                        <p class="text-muted mb-0"><?= $don['fonction'] ?></p>
-                        <p class="text-muted mb-0"><?= $don['idlogin'] ?></p>
-                      </div>
-                    </div>
-                  </div>
-                  </a>
-                </div> 
-               </div>				
-                             
-            <?php
-              }
-            ?>
-
-          <div class="voirtete">
-          <h2>Artibonite</h2>
-          </div>   
-
-        <?php
-       $req=$conbd->query("SELECT * FROM logintable WHERE fonction !='super-administrateur' AND site='Artibonite' ORDER BY idlogin ASC");
-                    while($don=$req->fetch()){
-                    ?>
-			<div class="linkvoirutilisateur">						
-              <a class="linkvoirutilisateur" href="supadmprofil.php?idlogin=<?php echo $don['idlogin'];?>">					
-               <div class="card">
-                  <div class="card-body">
-                    <div class="media">
-                      <span class="avatar avatar-xxl mr-5" style="background-image: url(photo/<?= $don['photoutilisateur'] ?>)"></span>
-                      <div class="media-body">
-                        <h4 class="m-0"><?= $don['prenom'] ?> <?= $don['nom'] ?></h4>
-                        <p class="text-muted mb-0"><?= $don['fonction'] ?></p>
-                        <p class="text-muted mb-0"><?= $don['idlogin'] ?></p>                        
-                      </div>
-                    </div>
-                  </div>
-                </div> 
-               </a>	
-              </div>			   
-            <?php
-              }
-            ?>
-
-          <div class="voirtete">
-          <h2>Centre</h2>
-          </div> 
-
-        <?php
-       $req=$conbd->query("SELECT * FROM logintable WHERE fonction !='super-administrateur' AND site='Centre' ORDER BY idlogin ASC");
-                    while($don=$req->fetch()){
-                    ?>
-			<div class="linkvoirutilisateur">		
-              <a href="supadmprofil.php?idlogin=<?php echo $don['idlogin'];?>">					
-               <div class="card">
-                  <div class="card-body">
-                    <div class="media">
-                      <span class="avatar avatar-xxl mr-5" style="background-image: url(photo/<?= $don['photoutilisateur'] ?>)"></span>
-                      <div class="media-body">
-                        <h4 class="m-0"><?= $don['prenom'] ?> <?= $don['nom'] ?></h4>
-                        <p class="text-muted mb-0"><?= $don['fonction'] ?></p>
-                        <p class="text-muted mb-0"><?= $don['idlogin'] ?></p>                        
-                      </div>
-                    </div>
-                  </div>
-                </div> 
-               </a>  
-             </div>
-            <?php
-              }
-            ?>                      
-        </div>
-
-      <div class="">
-        
-      </div>
-
-    </div>
-  </div>
-</div>
-        
-          </div>
-        </div>
+		</div>		
+			
+		</div> 
       </div>
 
 
     </div>
-<script>
+	
+  </body>
+ <script>
 $(document).ready(function(){
 
  load_data();
@@ -263,12 +171,12 @@ $(document).ready(function(){
  function load_data(query)
  {
   $.ajax({
-   url:"Traitement/rechercherutilisateurs.php",
+   url:"Traitement/rechercherDossiers.php",
    method:"POST",
    data:{query:query},
    success:function(data)
    {
-    $('#resultindex').html(data);
+    $('#resultRechercheDossier').html(data);
    }
   });
  }
@@ -284,6 +192,7 @@ $(document).ready(function(){
   }
  });
 });
-</script>	
-  </body>
+</script> 
 </html>
+ 
+		

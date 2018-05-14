@@ -14,7 +14,7 @@ include("../bd/connect.php");
             while($don=$rep->fetch()){
                     ?>
 			<div style="padding-top:17px;">			
- <a style="" href="" >	
+ <a style="" href="superadmindossiercomplet.php?idDossier=<?php echo $don['idDossier'];?>">	
  
        <?= $don['idDossier']?> - <?= $don['nomDossier']?> <?= $don['prenomDossier']?> </br>
 </a>	   

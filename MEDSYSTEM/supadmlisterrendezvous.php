@@ -108,7 +108,7 @@ if(Authsuperadmin::isLogged()){
 				   <li><a href=''> <i class="fe fe-folder"> </i> Dossiers</a>
 					  <ul>
 						 <li><a href='supadmcreationdossiers.php'>Creer Dossier</a></li>
-						 <li><a href=''>Voir Dossier</a></li>
+						 <li><a href='supadmrechercherdossier.php'>Rechercher Dossier</a></li>
 					  </ul>
 				   </li>
 				   <li><a href='#'> <i class="fe fe-folder-plus"> </i> Rendez-vous</a>
@@ -134,50 +134,7 @@ if(Authsuperadmin::isLogged()){
             <div class="positionadm">
               <p> <a href="superadminpage.php"><i class="fe fe-home"> </i> Acceuil </a> <i class="fe fe-chevron-right"> </i> Lister Rendez-vous </p>
             </div>	
-
-<style>
-/* Style the list */
-ul.tab {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-  /*  border: 1px solid #DDD; */
-    background-color: #FFF;
-}
-
-/* Float the list items side by side */
-ul.tab li {float: left;}
-
-/* Style the links inside the list items */
-ul.tab li a {
-    display: inline-block;
-    color: black;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    transition: 0.3s;
-    font-size: 17px;
-    color:#faaf40;
-	text-transform:uppercase;
-	font-weight:bold;
-}
-
-/* Change background color of links on hover */
-ul.tab li a:hover {background-color: #DDD;}
-
-/* Create an active/current tablink class */
-ul.tab li a:focus, .active {background-color: #DDD;}
-
-/* Style the tab content */
-.tabcontent {
-    display: none;
-    padding: 6px 12px;
-  /*  border: 1px solid #DDD; */
-    border-top: none;
-}
-</style>
-			
+		
 			<div class="listerdvtab1">
 			   <ul class="tab">
 				  <li><a href="#" class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">Valide</a></li>
@@ -239,6 +196,9 @@ ul.tab li a:focus, .active {background-color: #DDD;}
                             <?= $don['Departementrdv'] ?>
                           </td>
                           <td><?= $don['siterdv'] ?></td>
+                          <td class="text-right">
+                            <a href="supadmcreationdossiers.php" id="btnvaliderdv" class="btn btn-secondary btn-sm">Créer Dossier</a>
+                          </td>
                         </tr>
 						 <?php 
 						 } 

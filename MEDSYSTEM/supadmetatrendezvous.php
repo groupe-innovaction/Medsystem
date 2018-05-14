@@ -108,7 +108,7 @@ if(Authsuperadmin::isLogged()){
 				   <li><a href=''> <i class="fe fe-folder"> </i> Dossiers</a>
 					  <ul>
 						 <li><a href='supadmcreationdossiers.php'>Creer Dossier</a></li>
-						 <li><a href=''>Voir Dossier</a></li>
+						 <li><a href='supadmrechercherdossier.php'>Rechercher Dossier</a></li>
 					  </ul>
 				   </li>
 				   <li><a href='#'> <i class="fe fe-folder-plus"> </i> Rendez-vous</a>
