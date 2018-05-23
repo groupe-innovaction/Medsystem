@@ -41,19 +41,19 @@ if(!empty($_POST['username']) && !empty($_POST['password'])){
              'username' => $username,
              'password' => $password
               );
-         header('Location:infirmiere.php');
+         header('Location:Infirmiere/index.php');
       $username=$_POST['username'];
       $password=$_POST['password'];
         $req=$conbd->query('SELECT * FROM logintable WHERE username = "'.$username.'" AND password="'.$password.'" AND fonction="infirmiere"');
               while($don=$req->fetch()){
                     
                     $photoinf=$don['photoutilisateur'];
-					$nominf=$don['nom'];
+					          $nominf=$don['nom'];
                     $prenominf=$don['prenom'];
                     $fonctioninf=$don['fonction'];
 
                $_SESSION['var1inf']=$photoinf;
-			   $_SESSION['var2inf']=$nominf;
+			         $_SESSION['var2inf']=$nominf;
                $_SESSION['var3inf']=$prenominf;
                $_SESSION['var4inf']=$fonctioninf;
 			   
@@ -61,7 +61,7 @@ if(!empty($_POST['username']) && !empty($_POST['password'])){
 		   
       }
 
-	$requser = $conbd->prepare("SELECT * FROM logintable WHERE  username= ? AND password= ? AND fonction='administrateur'"); 
+	$requser = $conbd->prepare("SELECT * FROM logintable WHERE  username= ? AND password= ? AND fonction='administrateur' AND statut!='Bloquer'"); 
             $requser->execute(array($username,$password));
             $userexist = $requser->rowCount();
             
@@ -70,21 +70,29 @@ if(!empty($_POST['username']) && !empty($_POST['password'])){
              'username' => $username,
              'password' => $password
               );
-         header('Location:administrateur.php');
+         header('Location:Administrateur/index.php');
       $username=$_POST['username'];
       $password=$_POST['password'];
         $req=$conbd->query('SELECT * FROM logintable WHERE username = "'.$username.'" AND password="'.$password.'" AND fonction="administrateur"');
               while($don=$req->fetch()){
                     
                     $photoadmin=$don['photoutilisateur'];
-					$nomadmin=$don['nom'];
+					          $nomadmin=$don['nom'];
                     $prenomadmin=$don['prenom'];
                     $fonctionadmin=$don['fonction'];
+                    $idadm=$don['idlogin'];
+                    $siteadm=$don['site'];
+                    $usernameadm=$don['username'];
+                    $mailadm=$don['mail'];
 
                $_SESSION['var1admin']=$photoadmin;
-			   $_SESSION['var2admin']=$nomadmin;
+			         $_SESSION['var2admin']=$nomadmin;
                $_SESSION['var3admin']=$prenomadmin;
                $_SESSION['var4admin']=$fonctionadmin;
+               $_SESSION['var5admin']=$idadm;
+               $_SESSION['var6admin']=$siteadm;
+               $_SESSION['var7admin']=$usernameadm;
+               $_SESSION['var8admin']=$mailadm;
 			   
            }
       }
@@ -97,7 +105,7 @@ if(!empty($_POST['username']) && !empty($_POST['password'])){
              'username' => $username,
              'password' => $password
               );
-         header('Location:medecin.php');
+         header('Location:Medecin/index.php');
       $username=$_POST['username'];
       $password=$_POST['password'];
         $req=$conbd->query('SELECT * FROM logintable WHERE username = "'.$username.'" AND password="'.$password.'" AND fonction="medecin"');
@@ -124,21 +132,22 @@ if(!empty($_POST['username']) && !empty($_POST['password'])){
              'username' => $username,
              'password' => $password
               );
-         header('Location:secretaire.php');
+         header('Location:Secretaire/index.php');
       $username=$_POST['username'];
       $password=$_POST['password'];
         $req=$conbd->query('SELECT * FROM logintable WHERE username = "'.$username.'" AND password="'.$password.'" AND fonction="secretaire"');
               while($don=$req->fetch()){
                     
                     $photosec=$don['photoutilisateur'];
-					$nomsec=$don['nom'];
+					          $nomsec=$don['nom'];
                     $prenomsec=$don['prenom'];
                     $fonctionsec=$don['fonction'];
 
                $_SESSION['var1sec']=$photosec;
-			   $_SESSION['var2sec']=$nomsec;
+			         $_SESSION['var2sec']=$nomsec;
                $_SESSION['var3sec']=$prenomsec;
                $_SESSION['var4sec']=$fonctionsec;
+               
 			   
            }
       }
@@ -191,7 +200,7 @@ if(!empty($_POST['username']) && !empty($_POST['password'])){
           <div class="row">
             <div class="col col-login mx-auto">
               <div class="text-center mb-6">
-                <img src="images/LOGO.png" class="h-6" alt="">
+                <img src="images/LOGO2.png" class="h-6" alt="">
               </div>
               <form class="card" action="" method="post">
                 <div class="card-body p-6">

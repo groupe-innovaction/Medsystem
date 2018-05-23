@@ -197,7 +197,7 @@ if(Authsuperadmin::isLogged()){
                           </td>
                           <td><?= $don['siterdv'] ?></td>
                           <td class="text-right">
-                            <a href="supadmcreationdossiers.php" id="btnvaliderdv" class="btn btn-secondary btn-sm">Créer Dossier</a>
+                            <a href="validercreationdossier.php?idRDV=<?php echo $don['idRDV'] ?>" id="btnvaliderdv" class="btn btn-secondary btn-sm">Créer Dossier</a>
                           </td>
                         </tr>
 						 <?php 

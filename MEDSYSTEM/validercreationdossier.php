@@ -129,8 +129,25 @@ if(Authsuperadmin::isLogged()){
 		     </div>
 		  </div>
        </div>
-	   
-      <div class="">
+
+           <?php
+		   include("bd/connect.php");
+          if(!isset($_GET['idRDV']))
+          {
+          header('location:superadminpage.php');
+          }
+          else{
+          $idVrdv=intval($_GET['idRDV']);
+          }
+          $req=$conbd->query('SELECT * FROM rendezvous WHERE idRDV = "'.$idVrdv.'"');
+
+          $don=$req->fetch(); 
+            if(isset($don['idRDV'])){ ?>
+			
+			 <?php 
+			 $_SESSION['idCreationRDV']=$don['idRDV'];
+			 ?>	   
+
 	    <div class="container">
 		    <br>
             <div class="positionadm">
@@ -142,13 +159,13 @@ if(Authsuperadmin::isLogged()){
 			   <p> <i class="fe fe-folder"></i> Création De Dossier</p>
 			  </div>
 			  
-			  <?php include("Traitement/supadmdossierstraitement.php") ?>
+			  <?php include("Traitement/validerDtraitement.php") ?>
 			  <div class="Dvalider">
-               <?php if(isset($CreationDok)){ echo $CreationDok;}?></p>
+               <?php if(isset($CreationDok2)){ echo $CreationDok2;}?></p>
               </div>
 			  <span class="messageerreur">
-                <?php if(isset($DChampvide)){ echo $DChampvide;} ?>
-                <?php if(isset($CreationDNo)){ echo $CreationDNo;} ?>				
+                <?php if(isset($DChampvide2)){ echo $DChampvide2;} ?>
+                <?php if(isset($CreationDNo2)){ echo $CreationDNo2;} ?>				
               </span>
 			  
               <form method="POST" action="" enctype="multipart/form-data">
@@ -163,19 +180,19 @@ if(Authsuperadmin::isLogged()){
                     <div class="col-sm-6 col-md-6">
                       <div class="form-group">
                         <label class="form-label">Nom <span class="obligatoire">*</span></label>
-                        <input type="text" name="nomDossier" class="form-control" placeholder="Enter Nom" value="<?php if(isset($nomDossier))echo $nomDossier ?>">
+                        <input type="text" name="nomDossier" id="rdvInfo" class="form-control" placeholder="Enter Nom" value="<?php echo $don['nomrdv']; ?>">
                       </div>
                     </div>
                     <div class="col-sm-6 col-md-6">
                       <div class="form-group">
                         <label class="form-label">Prenom <span class="obligatoire">*</span></label>
-                        <input type="text" name="prenomDossier" class="form-control" placeholder="Entrer Prenom" value="<?php if(isset($prenomDossier))echo $prenomDossier ?>">
+                        <input type="text" name="prenomDossier" id="rdvInfo" class="form-control" placeholder="Entrer Prenom" value="<?php echo $don['prenomrdv']; ?>">
                       </div>
                     </div>
                     <div class="col-sm-6 col-md-6">
                       <div class="form-group">
                         <label class="form-label">Date De Naissance <span class="obligatoire">*</span></label>
-                        <input type="date" name="datedenaissanceDossier" class="form-control" placeholder="Entrer Date De Naissance" value="<?php if(isset($datedenaissanceDossier))echo $datedenaissanceDossier ?>">
+                        <input type="date" name="datedenaissanceDossier" id="rdvInfo" class="form-control" placeholder="Entrer Date De Naissance" value="<?php echo $don['daternaissancerdv']; ?>">
                       </div>
                     </div>
                     <div class="col-sm-6 col-md-6">
@@ -194,7 +211,7 @@ if(Authsuperadmin::isLogged()){
                     <div class="col-sm-6 col-md-6">
                       <div class="form-group">
                         <label class="form-label">Telephone <span class="obligatoire">*</span></label>
-                        <input type="tel" name="telephoneDossier" class="form-control" placeholder="Entrer Telephone" value="<?php if(isset($telephoneDossier))echo $telephoneDossier ?>">
+                        <input type="tel" name="telephoneDossier" id="rdvInfo" class="form-control" placeholder="Entrer Telephone" value="<?php echo $don['telephonerdv']; ?>">
                       </div>
                     </div>
                     <div class="col-sm-6 col-md-6">
@@ -242,26 +259,26 @@ if(Authsuperadmin::isLogged()){
                     <div class="col-sm-6 col-md-6">
                       <div class="form-group">
                         <label class="form-label">Antécédents Médicaux</label>
-                        <input type="text" name="antmedicaux" class="form-control" placeholder="Enter Antécédents Médicaux" value="">
+                        <input type="text" name="antmedicaux" class="form-control" placeholder="Enter Antécédents Médicaux" value="<?php if(isset($antmedicaux))echo $antmedicaux ?>">
                       </div>
                     </div>
                     <div class="col-sm-6 col-md-6">
                       <div class="form-group">
                         <label class="form-label">Antécédents Churigicaux</label>
-                        <input type="text" name="antchurigicaux" class="form-control" placeholder="Entrer Antécédents Churigicaux" value="">
+                        <input type="text" name="antchurigicaux" class="form-control" placeholder="Entrer Antécédents Churigicaux" value="<?php if(isset($antchurigicaux))echo $antchurigicaux ?>">
                       </div>
                     </div>
                     <div class="col-sm-6 col-md-6">
                       <div class="form-group">
                         <label class="form-label">Antécédents Familiaux</label>
-                        <input type="text" name="antecedentf" class="form-control" placeholder="Entrer Antécédents Familiaux" value="">
+                        <input type="text" name="antecedentf" class="form-control" placeholder="Entrer Antécédents Familiaux" value="<?php if(isset($antecedentf))echo $antecedentf ?>">
                       </div>
                     </div>
                     <div class="col-sm-6 col-md-6">
                       <div class="form-group">
                         <label class="form-label">Allergies Et Intolérence</label>
                         <input type="text" name="allergies" class="form-control" placeholder="Entrer Allergies Et Intolérence"
-                        value="">                      
+                        value="<?php if(isset($allergies))echo $allergies ?>">                      
                       </div>
                     </div>                 
                   </div>
@@ -279,20 +296,20 @@ if(Authsuperadmin::isLogged()){
                     <div class="col-sm-6 col-md-6">
                       <div class="form-group">
                         <label class="form-label">Taille</label>
-                        <input type="text" name="taille" class="form-control" placeholder="Enter Taille" value="">
+                        <input type="text" name="taille" class="form-control" placeholder="Enter Taille" value="<?php if(isset($taille))echo $taille ?>">
                       </div>
                     </div>
                     <div class="col-sm-6 col-md-6">
                       <div class="form-group">
                         <label class="form-label">Poids</label>
-                        <input type="text" name="poids" class="form-control" placeholder="Entrer Poids" value="">
+                        <input type="text" name="poids" class="form-control" placeholder="Entrer Poids" value="<?php if(isset($poids))echo $poids ?>">
                       </div>
                     </div>
                     <div class="col-sm-6 col-md-6">
                       <div class="form-group">
                         <label class="form-label">Groupe Sanguin</label>
                         <select name="groupesanguin" class="form-control">
-                          <option value=""></option>
+                          <option value="<?php if(isset($groupesanguin))echo $groupesanguin ?>"><?php if(isset($groupesanguin))echo $groupesanguin ?></option>
                           <option value="A+">A+</option>
                           <option value="A-">A-</option>
                           <option value="B+">B+</option>
@@ -308,16 +325,16 @@ if(Authsuperadmin::isLogged()){
                       <div class="form-group">
                         <label class="form-label">Indicateurs Biologique</label>
                         <input type="text" name="indicateursbiologique" class="form-control" placeholder="Entrer Indicateurs Biologique"
-                        value="">    
+                        value="<?php if(isset($indicateursbiologique))echo $indicateursbiologique ?>">    
                       </div>
                     </div>                 
                   </div>
                 </div>
 			  </div>
                 <div id="btndossier">
-                  <button type="submit" name="submitdossier" class="btn btn-primary"> <i class="fe fe-plus-circle"></i> Créer Dossier</button>
-             <br><br>               
-			   </div>					
+                  <button type="submit" name="submitValiderdossier" class="btn btn-primary"> <i class="fe fe-plus-circle"></i> Créer Dossier</button>
+                </div>	
+             <br><br>				
            </form>		  
 		  </div>
 		  <div class="col-md-2">
@@ -326,8 +343,11 @@ if(Authsuperadmin::isLogged()){
 		</div>		
 			
 		</div> 
-      </div>
-
+          <?php
+          }else{
+             header('location:superadminpage.php');
+          }
+          ?>
 
     </div>
 	

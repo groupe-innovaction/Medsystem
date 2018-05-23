@@ -65,7 +65,7 @@ if(Authsuperadmin::isLogged()){
                    </div>			
 			</div>
 			 <div class="dossierImprimer">
-		       <span> <i class="fe fe-printer"></i> Imprimer </span> <span> <i class="fe fe-edit"></i> Modifier  </span>
+		       <span onclick="myFunction()"> <i class="fe fe-printer"></i> Imprimer </span> <span> <i class="fe fe-edit"></i> Modifier  </span>
 		     </div>	
            <?php
 		   include("bd/connect.php");
@@ -79,12 +79,17 @@ if(Authsuperadmin::isLogged()){
           $req=$conbd->query('SELECT * FROM dossiers WHERE idDossier = "'.$id_dossier.'"');
 
           $don=$req->fetch(); 
-            if(isset($don['idDossier'])){ ?>			
+            if(isset($don['idDossier'])){ ?>	
+			
+			 <div class="Cprescription">
+			 	<?php include("Traitement/validerprescription.php") ?>
+			 </div>	
+			 
 	    <div class="row">
 		  <div id="dossiercomplet" class="col-md-12">
 		   <div class="card">
 				   <div class="card-body" style="background-color:#dee1f9;">
-					<form class="enteteprofil">
+					<div class="enteteprofil">
 					<br>
 					  <div class="imgenteteprofil">
 						 <img src="images/LOGO2.png" width="150px;">
@@ -98,6 +103,7 @@ if(Authsuperadmin::isLogged()){
 						 </center>        
 					 <div class="barprofil1"></div>
 					 <div class="barprofil2"></div>
+					 </div>
 				   </div> 	   
 		      <div class="dossierinfo1">
 			   <p> <i class="fe fe-folder"></i> Dossier Médicale De <?php echo $don['prenomDossier'];?> <?php echo $don['nomDossier'];?> </p>
@@ -210,49 +216,87 @@ if(Authsuperadmin::isLogged()){
                         </tr>						
                       </thead>
                     </table>
-                </div>				
-                      </br>				
+                </div>	
+                      </br>							
                   <div id="ttrDossier">
-                    <span> Historique Des Consultations</span>
+                    <span> Ordonnances</span>
                   </div>
                   <div class="table-responsive">
-                    <table class="table card-table text-nowrap">
-                      <thead id="styletable"> 
-						<tr>
-                          <th>Taille</th>
-						  <td><?= $don['taille'] ?></td> 
+                    <table class="table card-table table-vcenter text-nowrap">
+                      <thead>
+                        <tr>
+                          <th>Date Du Prescription</th>
+                          <th>Prescription</th>
+                          <th>Prescrit Par</th>
                         </tr>
-						<tr>
-                          <th>Poids</th>
-						  <td><?= $don['poids'] ?></td> 
-                        </tr>
-						<tr>
-                          <th>Groupe Sanguin</th>
-						  <td><?= $don['groupesanguin'] ?></td> 
-                        </tr>
-						<tr>
-                          <th>Indicateurs Biologique</th>
-						  <td style="border-bottom:1px solid #DDD;"><?= $don['indicateursbiologique'] ?></td> 
-                        </tr>						
                       </thead>
+                      <tbody>
+				  <?php 
+				     $req=$conbd->query('SELECT * FROM prescriptions WHERE id_Dossier = "'.$don['idDossier'].'"');
+                     while($don=$req->fetch()){?>			
+                        <tr>
+                          <td>
+                            <?= $don['dateDuPrescription'] ?>
+                          </td>
+                          <td>
+                            <?= $don['prescription'] ?>
+                          </td>
+                          <td>
+                            Dr <?= $don['PrenomAuteurPrescription'] ?> <?= $don['NomAuteurPrescription'] ?>
+                          </td>
+                        </tr>
+						 <?php 
+						 } 
+						 
+						 ?>
+                      </tbody>
                     </table>
-                </div>				
+                  </div>
+				  
               </div>				
 		  </div>
-		</div>		
+		</div>	
+	
           <?php
           }else{
              header('location:superadminpage.php');
           }
           ?>
+		  
 			<div id="fixe">
-			<a href="#"><i class="fe fe-edit-3"> </i></a>
-			</div>		  
+			  <div id="myBtnModal"> <i class="fe fe-edit-3"> </i> </div>
+			</div>	
+			<div id="myModal" class="Mainmodal">
+
+			  <!-- Modal content -->
+			  <div class="contentmodal">
+				<span class="closeModal">&times;</span>
+				</br>
+				<p id="ContenuModal">Faire Une Prescription</p>
+				</br>
+				<form method="POST">
+                    <div class="col-sm-12 col-md-12">
+                      <div class="form-group">
+                        <label class="form-label">Prescription<span class="obligatoire">*</span></label>                  
+                         <textarea name="prescription" class="form-control" placeholder="Notez Les Medicaments et leurs posologie..." rows="6" cols="47"value=""></textarea>
+					  </div>
+                    </div>	
+					<div class="text-center">
+					 <button type="submit" name="submitprescription" class="btn btn-primary"/> <i class="fe fe-check"> </i> Valider La Prescription  </button>
+					</div>					
+				</form>
+			  </div>
+
+			</div>			
 		</div> 
       </div>
-    </div>
-	
+    </div>	
   </body>
+ <script>
+function myFunction() {
+    window.print();
+}
+</script> 
  <script>
 $(document).ready(function(){
 
@@ -283,6 +327,24 @@ $(document).ready(function(){
  });
 });
 </script> 
+<script>
+var modal = document.getElementById('myModal');
+
+var btn = document.getElementById("myBtnModal");
+
+var span = document.getElementsByClassName("closeModal")[0];
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+span.onclick = function() {
+    modal.style.display = "none";
+}
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
 </html>
  
 		

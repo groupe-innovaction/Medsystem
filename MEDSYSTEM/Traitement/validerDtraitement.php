@@ -1,6 +1,6 @@
 <?php
 include("bd/connect.php");
-if(isset($_POST['submitdossier'])){
+if(isset($_POST['submitValiderdossier'])){
 	
 	$nomDossier=htmlspecialchars($_POST['nomDossier']);
 	$prenomDossier=htmlspecialchars($_POST['prenomDossier']);
@@ -23,7 +23,7 @@ if(isset($_POST['submitdossier'])){
 	$dateCreationDossier=date('d F Y');
 	$nomAuteurDossier=$_SESSION['var4'];	
 	$prenomAuteurDossier=$_SESSION['var2'];
-	$idRendezVous="";
+	$idRendezVous=$_SESSION['idCreationRDV'];
 	
 
 	
@@ -35,12 +35,12 @@ if(isset($_POST['submitdossier'])){
 		 $req=$conbd->prepare("INSERT INTO dossiers(nomDossier,prenomDossier,datedenaissanceDossier,lieudenaissanceDossier,adresseDossier,telephoneDossier,statutmDossier,professionDossier,referenceDossier,telephonerferenceDossier,antmedicaux,antchurigicaux,antecedentf,allergies,taille,poids,groupesanguin,indicateursbiologique,dateCreationDossier,nomAuteurDossier,prenomAuteurDossier,idRendezVous) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");	
 		 $req->execute(array($nomDossier,$prenomDossier,$datedenaissanceDossier,$lieudenaissanceDossier,$adresseDossier,$telephoneDossier,$statutmDossier,$professionDossier,$referenceDossier,$telephonerferenceDossier,$antmedicaux,$antchurigicaux,$antecedentf,$allergies,$taille,$poids,$groupesanguin,$indicateursbiologique,$dateCreationDossier,$nomAuteurDossier,$prenomAuteurDossier,$idRendezVous));		
 		 if($req){
-			 $CreationDok="Le Dossier Est Cree Avec Succes";
+			 $CreationDok2="Le Dossier Est Cree Avec Succes";
 		 }else{
-			 $CreationDNo="Creation De Dossier Echoue";
+			 $CreationDNo2="Creation De Dossier Echoue";
 		 }
 	}else{
-		$DChampvide="Les Champs Marques * sont Obligatoires Veuillez Les completer Tous";
+		$DChampvide2="Les Champs Marques * sont Obligatoires Veuillez Les completer Tous";
 	}		
 }
 

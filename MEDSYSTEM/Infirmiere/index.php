@@ -1,10 +1,10 @@
 <?php
 session_start();
-require("authmedecin.php");
-if(Authmedecin::isLogged()){
+require("authinfirmiere.php");
+if(Authinf::isLogged()){
 
 }else{
-  header('Location:medsystemloginpage.php');
+  header('Location:../medsystemloginpage.php');
 }
 ?>
 <!doctype html>
@@ -22,33 +22,22 @@ if(Authmedecin::isLogged()){
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
-    <link rel="icon" href="./favicon.ico" type="image/x-icon"/>
-    <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico" />
-    <!-- Generated: 2018-03-27 13:25:03 +0200 -->
-    <title>MEDSYSTEM | VOIR UTILISATEUR</title>
+
+    <title>MEDSYSTEM | INFIRMIERE</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,500,500i,600,600i,700,700i&amp;subset=latin-ext">
-    <script src="./assets/js/require.min.js"></script>
+   <script src="./assets/js/require.min.js"></script>
     <script>
       requirejs.config({
           baseUrl: '.'
           });
     </script>
-    <!-- Dashboard Core -->
-    <link href="./assets/css/dashboard.css" rel="stylesheet" />
-    <link href="css/stylemenu.css" rel="stylesheet" />  
-    <script src="./assets/js/dashboard.js"></script> 
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <!-- c3.js Charts Plugin -->
-    <link href="./assets/plugins/charts-c3/plugin.css" rel="stylesheet" />
-    <script src="./assets/plugins/charts-c3/plugin.js"></script>
-    <!-- Google Maps Plugin -->
-    <link href="./assets/plugins/maps-google/plugin.css" rel="stylesheet" />
-    <script src="./assets/plugins/maps-google/plugin.js"></script>
-    <!-- Input Mask Plugin -->
-    <script src="./assets/plugins/input-mask/plugin.js"></script>
-	<script src="js/jquery-latest.min.js" type="text/javascript"></script>
-    <script src="js/script.js"></script>
+    <link href="../assets/css/dashboard.css" rel="stylesheet" />
+    <link href="../css/stylemenu.css" rel="stylesheet" />  
+    <script src="../assets/js/dashboard.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <script src="../js/jquery-latest.min.js" type="text/javascript"></script>
+    <script src="../js/script.js"></script>
   </head>
   <body class="">
     <div class="page">
@@ -56,8 +45,8 @@ if(Authmedecin::isLogged()){
         <div class="header">
           <div class="container">
             <div class="d-flex">
-              <a class="navbar-brand" href="./index.html">
-                <img src="images/LOGO2.png" style="width:150px; height:23px;" class="navbar-brand-img" alt="tabler.io">
+              <a class="navbar-brand">
+                <img src="../images/LOGO2.png" style="width:150px; height:23px;" class="navbar-brand-img">
               </a>
               <div class="ml-auto d-flex order-lg-2">
                 <div class="dropdown d-none d-md-flex">
@@ -91,16 +80,16 @@ if(Authmedecin::isLogged()){
                 </div>
                 <div class="dropdown">
                   <a href="#" class="nav-link pr-0" data-toggle="dropdown">
-                    <span class="avatar"> <img src="photo/<?php echo $_SESSION['var1medecin'] ?>"/> </span>
+                    <span class="avatar"> <img src="../photo/<?php echo $_SESSION['var1inf'] ?>"/> </span>
                     <span class="ml-2 d-none d-lg-block">
-
-                      <span class="text-default"><?php echo $_SESSION['var3medecin'] ?>  </span>
-                      <small class="text-muted d-block mt-1"> <?php echo $_SESSION['var4medecin'] ?> </small>
+                      <span class="text-default"><?php echo $_SESSION['var2inf'] ?>  </span>
+                      <span class="text-default"><?php echo $_SESSION['var3inf'] ?>  </span>
+                      <small class="text-muted d-block mt-1"> <?php echo $_SESSION['var4inf'] ?> </small>
 
                     </span>
                   </a>
                   <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                    <a class="dropdown-item" href="medsystemlogoutpage.php">Deconnecter</a>
+                    <a class="dropdown-item" href="../medsystemlogoutpage.php">Deconnecter</a>
                   </div>
                 </div>
               </div>
@@ -111,7 +100,7 @@ if(Authmedecin::isLogged()){
 		   <div class="container">
 		      <div id='cssmenu'>
 		         <ul>
-				   <li class='active'><a href='#'> <i class="fe fe-folder"> </i> Dossiers</a>
+				   <li><a href='#'> <i class="fe fe-folder"> </i> Dossiers</a>
 					  <ul>
 						 <li><a href=''>Creer Dossier</a></li>
 						 <li><a href=''>Voir Dossier</a></li>
@@ -132,8 +121,8 @@ if(Authmedecin::isLogged()){
        <div class="page-content">
 	      <center> <h4>Juste Pour Tester...</h4> </center>
         <center>   
-		 <p> <h1>Bienvenue</h1> <h3><?php echo $_SESSION['var3medecin'] ?> <?php echo $_SESSION['var2medecin'] ?> </h3> </p> 
-         <h5>FONCTION: <?php echo $_SESSION['var4medecin'] ?></h5>		 
+		 <p> <h1>Bienvenue</h1> <h3><?php echo $_SESSION['var3inf'] ?> <?php echo $_SESSION['var2inf'] ?> </h3> </p> 
+         <h5>FONCTION: <?php echo $_SESSION['var4inf'] ?></h5>		 
 		</centre>
 		
       </div>

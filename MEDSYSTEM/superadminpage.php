@@ -87,7 +87,7 @@ if(Authsuperadmin::isLogged()){
                   <a href="#" class="nav-link pr-0" data-toggle="dropdown">
                     <span class="avatar"> <img src="photo/<?php echo $_SESSION['var1'] ?>"/> </span>
                     <span class="ml-2 d-none d-lg-block">
-
+                      <span class="text-default"><?php echo $_SESSION['var4'] ?>  </span>
                       <span class="text-default"><?php echo $_SESSION['var2'] ?>  </span>
                       <small class="text-muted d-block mt-1"> <?php echo $_SESSION['var3'] ?> </small>
 
