@@ -85,7 +85,7 @@ if(Authsec::isLogged()){
 
                       <span class="text-default"><?php echo $_SESSION['var2sec'] ?>  </span>
                       <span class="text-default"><?php echo $_SESSION['var3sec'] ?>  </span>
-                      <small class="text-muted d-block mt-1"> <?php echo $_SESSION['var4sec'] ?> </small>
+                      <small class="text-muted d-block mt-1"><span class="status-icon bg-success"></span><?php echo $_SESSION['var4sec'] ?> </small>
 
                     </span>
                   </a>
@@ -101,17 +101,12 @@ if(Authsec::isLogged()){
 		   <div class="container">
 		      <div id='cssmenu'>
 		         <ul>
-				   <li><a href='#'> <i class="fe fe-folder"> </i> Dossiers</a>
-					  <ul>
-						 <li><a href=''>Creer Dossier</a></li>
-						 <li><a href=''>Voir Dossier</a></li>
-					  </ul>
+				   <li><a href=''> <i class="fe fe-folder"> </i> Dossiers</a>
+
 				   </li>
-				   <li><a href='#'> <i class="fe fe-folder-plus"> </i> Rendez-vous</a>
+				   <li><a href=''> <i class="fe fe-folder-plus"> </i> Rendez-vous</a>
 					   <ul>
-						 <li><a href=''>Prendre Rendez-vous</a></li>
-						 <li><a href=''>Lister Rendez-vous</a></li>
-						 <li><a href=''>Annuler Rendez-vous</a></li>
+						 <li><a href='voirrendezvous.php'>Voir Rendez-vous</a></li>
 					  </ul>  
 				   </li>
 		       </ul>
@@ -119,12 +114,154 @@ if(Authsec::isLogged()){
 		  </div>
        </div>
 	   
-       <div class="page-content">
-	      <center> <h4>Juste Pour Tester...</h4> </center>
-        <center>   
-		 <p> <h1>Bienvenue</h1> <h3><?php echo $_SESSION['var3sec'] ?> <?php echo $_SESSION['var2sec'] ?> </h3> </p> 
-         <h5>FONCTION: <?php echo $_SESSION['var4sec'] ?></h5>		 
-		</centre>
+      <div class="page-content">
+       <div class="container">
+	   
+            <div class="positionadm">
+              <p> <i class="fe fe-home"> </i> Acceuil  <i class="fe fe-chevron-right"> </i> Tableau De Bord | Creer Dossier</p>
+            </div>
+			
+			<div class="alert alert-primary alert-dismissible">
+				<button type="button" class="close" data-dismiss="alert"></button>
+				 <b>Les informations et les operations auxquelles vous avez accès sont relatives uniquement pour le centre dans lequel vous travaillez.</b>
+			</div>
+	   <div class="row">	   
+		<div class="col-md-12">
+		   <div class="SECmessage">
+			 <?php include("Traitement/SecDossier.php"); ?>
+			  <div class="DvaliderSEC">
+               <?php if(isset($CreationDok)){ echo $CreationDok;}?>
+              </div>
+			  <div class="messageerreurSEC">
+                <?php if(isset($DChampvide)){ echo $DChampvide;} ?>
+                <?php if(isset($CreationDNo)){ echo $CreationDNo;} ?>				
+              </div> 
+			</div>  
+		 <div class="row">
+			<div class="col-md-8">
+                       <form method="POST">
+						   <div class="card">
+							<div class="card-header">
+							  <div class="dossiertete">
+								<p>Informations Personnelles</p>
+							  </div>
+							</div>
+							<div class="card-body">
+							  <div class="row">
+								<div class="col-sm-6 col-md-6">
+								  <div class="form-group">
+									<label class="form-label">Nom <span class="obligatoire">*</span></label>
+									<input type="text" name="nomDossier" class="form-control" placeholder="Enter Nom" value="">
+								  </div>
+								</div>
+								<div class="col-sm-6 col-md-6">
+								  <div class="form-group">
+									<label class="form-label">Prenom <span class="obligatoire">*</span></label>
+									<input type="text" name="prenomDossier" class="form-control" placeholder="Entrer Prenom" value="">
+								  </div>
+								</div>
+								<div class="col-sm-6 col-md-6">
+								  <div class="form-group">
+									<label class="form-label">Date De Naissance <span class="obligatoire">*</span></label>
+									<input type="date" name="datedenaissanceDossier" class="form-control" placeholder="Entrer Date De Naissance" value="">
+								  </div>
+								</div>
+								<div class="col-sm-6 col-md-6">
+								  <div class="form-group">
+									<label class="form-label">Lieu De Naissance <span class="obligatoire">*</span></label>
+									<input type="text" name="lieudenaissanceDossier" class="form-control" placeholder="Entrer Lieu De Naissance"
+									value="">                      
+								  </div>
+								</div>
+								<div class="col-sm-6 col-md-6">
+								  <div class="form-group">
+									<label class="form-label">Adresse <span class="obligatoire">*</span></label>
+									<input type="text" name="adresseDossier" class="form-control" placeholder="Entrer Adresse" value="">
+								  </div>
+								</div>
+								<div class="col-sm-6 col-md-6">
+								  <div class="form-group">
+									<label class="form-label">Telephone <span class="obligatoire">*</span></label>
+									<input type="tel" name="telephoneDossier" class="form-control" placeholder="Entrer Telephone" value="">
+								  </div>
+								</div>
+								<div class="col-sm-6 col-md-6">
+								  <div class="form-group">
+									<label class="form-label">Situation Familiale <span class="obligatoire">*</span></label>
+									<select name="statutmDossier" class="form-control">
+									  <option value=""></option>
+									  <option value="Celibataire">Celibataire</option>
+									  <option value="Marié (e)">Marié (e)</option>
+									  <option value="Divorcé (e)">Divorcé (e)</option>
+									</select>                     
+								  </div>
+								</div>                   
+								<div class="col-sm-6 col-md-6">
+								  <div class="form-group">
+									<label class="form-label">Profession / Occupation<span class="obligatoire">*</span></label>
+									<input type="text" name="professionDossier" class="form-control" placeholder="Entrer Profession" value="">                       
+								  </div>
+								</div>
+								<div class="col-sm-6 col-md-6">
+								  <div class="form-group">
+									<label class="form-label">Personne De Reference<span class="obligatoire">*</span></label>
+									<input type="text" name="referenceDossier" class="form-control" placeholder="Entrer Nom Complet Reference" value="">
+
+								  </div>
+								</div>                    
+								<div class="col-sm-6 col-md-6">
+								  <div class="form-group">
+									<label class="form-label">Numero Telephone <span class="obligatoire">*</span></label>
+									<input type="tel" name="telephonerferenceDossier" class="form-control" placeholder="Entrer Numero De La Personne Référence" value="">
+								  </div>
+								</div>                   
+							  </div>
+							</div>
+						  </div>					   
+				            <div id="btndossier">
+                              <button type="submit" name="submitdossierSEC" class="btn btn-primary"> <i class="fe fe-plus-circle"></i> Créer Dossier</button>
+                              <br><br>               
+			                </div>
+                           <br>							
+					   </form> 
+			</div>
+		
+			 <div class="col-md-4">
+			  <div class="card">
+				 <div class="card-body p-3 text-center">
+					<div class="h1 m-0"> <i class="fe fe-calendar"></i> </div>
+					  <div  class="text-muted mb-4"><?php date_default_timezone_set('America/Port-au-Prince'); $date = date('d F Y'); Print("$date");?>
+					  </div>
+					</div>		  
+			  </div> 
+			  <div class="card">
+               
+                  <div class="card-body">
+                    <div class="media">
+                      <span class="avatar avatar-xxl mr-5" id="adminimg" style="background-image: url(../photo/<?php echo $_SESSION['var1sec'] ?>)"></span>
+					  
+					  <div class="media-body" id="adminfonom">				  
+                        <h4 class="m-0"><?php echo $_SESSION['var2sec'] ?> <?php echo $_SESSION['var3sec'] ?></h4>
+                        <p class="text-muted mb-0"> <span class="status-icon bg-success"></span> <?php echo $_SESSION['var4sec'] ?></p>
+                      </div>
+                    </div>
+					  <br>
+					 <p class="text-muted mb-0"> <i class="fe fe-user"> </i> Username : <?php echo $_SESSION['var7sec'] ?></p>
+					 <p class="text-muted mb-0"> <i class="fe fe-home"> </i> Site : <?php echo $_SESSION['var6sec'] ?></p>
+				     <p class="text-muted mb-0"> <i class="fe fe-tag"> </i> Fonction : <?php echo $_SESSION['var4sec'] ?></p>
+					 <p class="text-muted mb-0"> <i class="fe fe-mail"> </i> Email : <?php echo $_SESSION['var8sec'] ?></p>
+					  <br>
+					 <center> <p class="text-muted mb-0"><a href="modifierProfile.php"> <i class="fe fe-edit" > </i> Modifier </a></p> </center>
+                  </div>
+            
+			  </div>
+			 </div>
+		 
+		</div> 
+	   </div>
+      </div>			
+			   
+	   </div>
 		
       </div>
 

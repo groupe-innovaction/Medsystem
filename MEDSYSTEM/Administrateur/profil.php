@@ -1,13 +1,12 @@
 <?php
 session_start();
-require("authsuperadmin.php");
-if(Authsuperadmin::isLogged()){
+require("authadmin.php");
+if(Authadmin::isLogged()){
 
 }else{
-  header('Location:medsystemloginpage.php');
+  header('Location:../medsystemloginpage.php');
 }
 ?>
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -15,6 +14,7 @@ if(Authsuperadmin::isLogged()){
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta http-equiv="Content-Language" content="en" />
+	<meta charset="utf-08">
     <meta name="msapplication-TileColor" content="#2d89ef">
     <meta name="theme-color" content="#4188c9">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
@@ -23,7 +23,7 @@ if(Authsuperadmin::isLogged()){
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
 
-    <title>MEDSYSTEM | PROFIL UTILISATEUR</title>
+    <title>MEDSYSTEM | PROFILE</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,500,500i,600,600i,700,700i&amp;subset=latin-ext">
     <script src="./assets/js/require.min.js"></script>
@@ -32,20 +32,21 @@ if(Authsuperadmin::isLogged()){
           baseUrl: '.'
           });
     </script>
-    <link href="./assets/css/dashboard.css" rel="stylesheet" />
-    <link href="css/stylemenu.css" rel="stylesheet" />  
-    <script src="./assets/js/dashboard.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <script src="js/jquery-latest.min.js" type="text/javascript"></script>
-    <script src="js/script.js"></script>    
-   </head>
+    <link href="../assets/css/dashboard.css" rel="stylesheet" />
+    <link href="../css/stylemenu.css" rel="stylesheet" />  
+    <script src="../assets/js/dashboard.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <script src="../js/jquery-latest.min.js" type="text/javascript"></script>
+    <script src="../js/script.js"></script>
+  </head>
   <body class="">
-
+    <div class="page">
+      <div class="page-main">
         <div class="header">
           <div class="container">
             <div class="d-flex">
-              <a class="navbar-brand" href="./index.html">
-                <img src="images/LOGO2.png" style="width:150px; height:23px;" class="navbar-brand-img" alt="tabler.io">
+              <a class="navbar-brand">
+                <img src="../images/LOGO2.png" style="width:150px; height:23px;" class="navbar-brand-img">
               </a>
               <div class="ml-auto d-flex order-lg-2">
                 <div class="dropdown d-none d-md-flex">
@@ -79,16 +80,16 @@ if(Authsuperadmin::isLogged()){
                 </div>
                 <div class="dropdown">
                   <a href="#" class="nav-link pr-0" data-toggle="dropdown">
-                    <span class="avatar"> <img src="photo/<?php echo $_SESSION['var1'] ?>"/> </span>
+                    <span class="avatar"> <img src="../photo/<?php echo $_SESSION['var1admin'] ?>"/> </span>
                     <span class="ml-2 d-none d-lg-block">
-
-                      <span class="text-default"><?php echo $_SESSION['var2'] ?>  </span>
-                      <small class="text-muted d-block mt-1"> <?php echo $_SESSION['var3'] ?> </small>
+                      <span class="text-default"><?php echo $_SESSION['var2admin'] ?>  </span>
+                      <span class="text-default"><?php echo $_SESSION['var3admin'] ?>  </span>
+                      <small class="text-muted d-block mt-1"> <?php echo $_SESSION['var4admin'] ?> </small>
 
                     </span>
                   </a>
                   <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                    <a class="dropdown-item" href="medsystemlogoutpage.php">Deconnecter</a>
+                    <a class="dropdown-item" href="../medsystemlogoutpage.php">Deconnecter</a>
                   </div>
                 </div>
               </div>
@@ -101,84 +102,45 @@ if(Authsuperadmin::isLogged()){
 		         <ul>
 				   <li><a href=''> <i class="fe fe-users"> </i> Utilisateurs</a>
 					  <ul>
-						 <li><a href='superadminajouterutilisateurs.php'>Ajouter Utilisateur</a></li>
-						 <li><a href='superadminvoirutilisateurs.php'>Lister Utilisateurs</a></li>
+						 <li><a href='ajouterutilisateurs.php'>Ajouter Utilisateur</a></li>
+						 <li><a href='listerutilisateurs.php'>Lister Utilisateurs</a></li>
 					  </ul> 
 				   </li>
-				   <li><a href=''> <i class="fe fe-folder"> </i> Dossiers</a>
+				   <li><a href='#'> <i class="fe fe-folder"> </i> Dossiers</a>
 					  <ul>
-						 <li><a href='supadmcreationdossiers.php'>Creer Dossier</a></li>
-						 <li><a href='supadmrechercherdossier.php'>Rechercher Dossier</a></li>
+						 <li><a href=''>Creer Dossier</a></li>
+						 <li><a href=''>Voir Dossier</a></li>
 					  </ul>
 				   </li>
 				   <li><a href='#'> <i class="fe fe-folder-plus"> </i> Rendez-vous</a>
 					   <ul>
-						 <li><a href='supadmprendrerendezvous.php'>Prendre Rendez-vous</a></li>
-						 <li><a href='supadmlisterrendezvous.php'>Lister Rendez-vous</a></li>
+						 <li><a href='Prenderendezvous.php'>Prendre Rendez-vous</a></li>
+						 <li><a href='listerRendezvous.php'>Lister Rendez-vous</a></li>
 					  </ul>  
-				   </li>
-				   <li><a href=''> <i class="fe fe-layers"> </i> Pages Web</a>
-					  <ul>
-						 <li><a href=''>Ajouter Contenu</a></li>
-						 <li><a href=''>Modifier Contenu</a></li>
-					  </ul>    
 				   </li>
 		       </ul>
 		     </div>
 		  </div>
-       </div>	   
-        <div class="page-content">
-          <div class="container">
-            <div class="positionadm">
-              <p> <a href="superadminpage.php"><i class="fe fe-home"> </i> Acceuil </a>  <i class="fe fe-chevron-right"> </i> Voir Utilisateurs <i class="fe fe-chevron-right"> </i> Profil </p>
-            </div>
-        <div class="content-wrapper">
-          <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12 grid-margin">
-             <div class="profilteteimprimer"> 
-              <div class="card">
-                <div class="">
-                  <div class="align-items-center justify-content-between d-lg-flex d-xl-flex d-md-block d-block">
-                    <div id="chartLegend"></div>
-                    <div class="col-md-8">
-
-                    </div>
-                    
-                    <div class="col-md-4">
-                      <input type="radio" name="tabstete" id="tab1" checked="checked"/>
-                      <input type="radio" name="tabstete" id="tab2"/>
-                      <label id="impression" onclick="imprimer_page()" for="tab2"> <i class="fe fe-printer"></i> Imprimer</label>
-                   <!--   <input type="radio" name="tabstete" id="tab3"/>
-                      <label for="tab3"> <i class="fe fe-alert-circle"></i> Bloquer</label> -->
-                    </div>
-					
-                  </div>
-                </div>
-              </div>
-             </div>
-            </div>
-          </div>
-     </div>            
-            <div class="row row-cards">
-
-<div class="container">
-   <?php
-include("bd/connect.php");
-?>
-
+       </div>
            <?php
-          if(!isset($_GET['idlogin']))
-          {
-          header('location:accueil');
-          }
-          else{
-          $mon_id=intval($_GET['idlogin']);
-          }
-          $req=$conbd->query('SELECT * FROM logintable WHERE idlogin = "'.$mon_id.'"');
+			  include("../bd/connect.php"); 
+			  if(!isset($_GET['idlogin']))
+			  {
+			  header('location:index.php');
+			  }
+			  else{
+			  $MonIdAdm=intval($_GET['idlogin']);
+			  }
+			  $req=$conbd->query('SELECT * FROM logintable WHERE idlogin = "'.$MonIdAdm.'"');
 
-          $don=$req->fetch(); 
-            if(isset($don['idlogin'])){ ?>
-			
+			  $don=$req->fetch(); 
+				if(isset($don['idlogin'])){ 
+			?>	   
+	   <div class="container">
+	       <br>
+         <div class="positionadm">
+          <p> <a href="index.php"><i class="fe fe-home"> </i> Acceuil </a> <i class="fe fe-chevron-right"> </i> Lister Utilisateurs </a> <i class="fe fe-chevron-right"> </i>  Profil </p>
+         </div>	
 <div class="tab-wrap">
   
        <input type="radio" name="tabs" id="tab-1" checked>
@@ -193,7 +155,7 @@ include("bd/connect.php");
             <form class="enteteprofil">
 			<br><br>
 			  <div class="imgenteteprofil">
-				 <img src="images/LOGO2.png" width="150px;">
+				 <img src="../images/LOGO2.png" width="150px;">
 			  </div>
               <br><br>
              <div class="barprofil0"></div>
@@ -317,21 +279,24 @@ include("bd/connect.php");
 		 </div>  
 		 
 		 <div class="col-md-2">
-		 <button class="btndebloquertete" type="btnsubmit" name="btnsubmit" class="btn btn-primary"> <i class="fe fe-alert-triangle"></i> </button>
+		 <button class="btndebloquertete" class="btn btn-primary"> <i class="fe fe-alert-triangle"></i> </button>
 		  <div class="card">
 		   <div class="card-body">
 		   <div class="bloquerutilisateur">
-            <form method="POST" action="">
+            <form method="POST">
 			
 			  <?php
 			  if(isset($_POST['btnsubmit'])){
 				  if(!empty($_POST['radio1'])){
+	
+					  
 				  $radio1=htmlspecialchars($_POST['radio1']);				  
-			   $req=$conbd->prepare('UPDATE logintable SET statut="'.$radio1.'" WHERE idlogin = "'.$mon_id.'"');
+			   $req=$conbd->prepare('UPDATE logintable SET statut="'.$radio1.'" WHERE idlogin = "'.$MonIdAdm.'"');
 			   $req->execute();
                 if($req){
 					$btnvalider="$radio1 !!!";
 				}
+
 				 }else{
 					 $btnaction="Pas d'Action";
 				 }
@@ -374,23 +339,16 @@ include("bd/connect.php");
     </div>
 
      <div class="tab-label-content" id="tab2-content">
-       <label class="profiltxt" for="tab-2"> <i class="fe fe-edit"> </i> <a href="modifierprofile.php?idlogin=<?php echo $don['idlogin'];?>"> Modifier </a> </label>
+       <label class="profiltxt" for="tab-2"> <i class="fe fe-edit"> </i> <a href="modifierProfil.php?idlogin=<?php echo $don['idlogin'];?>"> Modifier </a> </label>
      </div>
-</div>
-                  <?php
-          }else{
-             header('location:superadminpage.php');
-          }
-          ?>
-		  
-          </div>
-        </div>
+	    
       </div>
-<script type="text/javascript">
-function imprimer_page(){
-  window.print();
-}
-</script>
-    </div>
+	  
+	     <?php
+          }else{
+             header('location:index.php');
+          }
+         ?>
+ 
   </body>
 </html>

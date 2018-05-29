@@ -35,12 +35,12 @@ if(isset($_POST['submitdossier'])){
 		 $req=$conbd->prepare("INSERT INTO dossiers(nomDossier,prenomDossier,datedenaissanceDossier,lieudenaissanceDossier,adresseDossier,telephoneDossier,statutmDossier,professionDossier,referenceDossier,telephonerferenceDossier,antmedicaux,antchurigicaux,antecedentf,allergies,taille,poids,groupesanguin,indicateursbiologique,dateCreationDossier,nomAuteurDossier,prenomAuteurDossier,idRendezVous) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");	
 		 $req->execute(array($nomDossier,$prenomDossier,$datedenaissanceDossier,$lieudenaissanceDossier,$adresseDossier,$telephoneDossier,$statutmDossier,$professionDossier,$referenceDossier,$telephonerferenceDossier,$antmedicaux,$antchurigicaux,$antecedentf,$allergies,$taille,$poids,$groupesanguin,$indicateursbiologique,$dateCreationDossier,$nomAuteurDossier,$prenomAuteurDossier,$idRendezVous));		
 		 if($req){
-			 $CreationDok="Le Dossier Est Cree Avec Succes";
+			 $CreationDok="Le Dossier Est Crée Avec Succès";
 		 }else{
-			 $CreationDNo="Creation De Dossier Echoue";
+			 $CreationDNo="Creation De Dossier Echoué";
 		 }
 	}else{
-		$DChampvide="Les Champs Marques * sont Obligatoires Veuillez Les completer Tous";
+		$DChampvide="Les Champs Marqués * sont Obligatoires Veuillez Les completer Tous";
 	}		
 }
 

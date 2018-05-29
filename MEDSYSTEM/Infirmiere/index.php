@@ -84,7 +84,7 @@ if(Authinf::isLogged()){
                     <span class="ml-2 d-none d-lg-block">
                       <span class="text-default"><?php echo $_SESSION['var2inf'] ?>  </span>
                       <span class="text-default"><?php echo $_SESSION['var3inf'] ?>  </span>
-                      <small class="text-muted d-block mt-1"> <?php echo $_SESSION['var4inf'] ?> </small>
+                      <small class="text-muted d-block mt-1"> <span class="status-icon bg-success"></span> <?php echo $_SESSION['var4inf'] ?> </small>
 
                     </span>
                   </a>
@@ -100,18 +100,7 @@ if(Authinf::isLogged()){
 		   <div class="container">
 		      <div id='cssmenu'>
 		         <ul>
-				   <li><a href='#'> <i class="fe fe-folder"> </i> Dossiers</a>
-					  <ul>
-						 <li><a href=''>Creer Dossier</a></li>
-						 <li><a href=''>Voir Dossier</a></li>
-					  </ul>
-				   </li>
-				   <li><a href='#'> <i class="fe fe-folder-plus"> </i> Rendez-vous</a>
-					   <ul>
-						 <li><a href=''>Prendre Rendez-vous</a></li>
-						 <li><a href=''>Lister Rendez-vous</a></li>
-						 <li><a href=''>Annuler Rendez-vous</a></li>
-					  </ul>  
+				   <li><a href=''> <i class="fe fe-folder"> </i> Dossiers</a>
 				   </li>
 		       </ul>
 		     </div>
@@ -119,11 +108,95 @@ if(Authinf::isLogged()){
        </div>
 	   
        <div class="page-content">
-	      <center> <h4>Juste Pour Tester...</h4> </center>
-        <center>   
-		 <p> <h1>Bienvenue</h1> <h3><?php echo $_SESSION['var3inf'] ?> <?php echo $_SESSION['var2inf'] ?> </h3> </p> 
-         <h5>FONCTION: <?php echo $_SESSION['var4inf'] ?></h5>		 
-		</centre>
+  
+       <div class="container">
+	   
+            <div class="positionadm">
+              <p> <i class="fe fe-home"> </i> Acceuil  <i class="fe fe-chevron-right"> </i> Tableau De Bord </p>
+            </div>
+			
+			<div class="alert alert-primary alert-dismissible">
+				<button type="button" class="close" data-dismiss="alert"></button>
+				 <b>Les informations et les operations auxquelles vous avez accès sont relatives uniquement pour le centre dans lequel vous travaillez.</b>
+			</div>
+	   <div class="row">	   
+		<div class="col-md-12"> 
+
+				 				  <?php
+				            include("../bd/connect.php");
+				            $totalrdv = $conbd->query('SELECT * FROM dossiers WHERE SiteCreationDossier="'.$_SESSION['var6inf'].'"');
+							$totaledemande = $totalrdv->rowcount();
+				                ?>	
+			         <div class="dossiertete">
+					    <p>Dossier a Completer  -  				  
+						  <?php
+							date_default_timezone_set('America/Port-au-Prince');
+							$date = date('d F Y');
+							Print("$date");
+						  ?>
+       				  </p>
+					  </div>
+					  <br>
+                <div class="card">
+                  <div class="card-header">
+                    <h3 id="tiredemande1" class="card-title"><b> <?php echo $totaledemande; ?></b></h3>
+                  </div>
+                  <div class="table-responsive">
+                    <table class="table card-table table-vcenter text-nowrap">
+                      <thead>
+                        <tr>
+                          <th class="w-1">No.</th>
+                          <th>Nom</th>
+                          <th>Prenom</th>
+                          <th>Telephone</th>
+                          <th>Adresse</th>
+                          <th>Date De Naissance</th>
+                          <th>Profession</th>
+                          <th></th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+						 <?php
+						   $req=$conbd->query('SELECT * FROM dossiers WHERE SiteCreationDossier="'.$_SESSION['var6inf'].'"');
+						   while($don=$req->fetch()){
+                        ?>			
+                        <tr>
+                          <td><span class="text-muted">  <span class="status-icon bg-success"></span> <?= $don['idDossier'] ?></span></td>
+                          <td><a href="invoice.html" class="text-inherit"><?= $don['nomDossier'] ?></a></td>
+                          <td>
+                            <?= $don['prenomDossier'] ?>
+                          </td>
+                          <td>
+                            <?= $don['telephoneDossier'] ?>
+                          </td>
+                          <td>
+                            <?= $don['adresseDossier'] ?>
+                          </td>
+                          <td>
+                            <?= $don['datedenaissanceDossier'] ?>
+                          </td>
+                          <td>
+						    <?= $don['professionDossier'] ?>
+						  </td>
+                          <td class="text-right">
+                            <a href="completerdossier.php?idDossier=<?php echo $don['idDossier'];?>" id="btnvaliderdv" class="btn btn-secondary btn-sm">Completer Dossier</a>
+                          </td>
+                        </tr>
+						 <?php 
+						 } 
+						 
+						 ?>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>		
+		
+		
+	   </div>
+      </div>			
+			   
+	   </div>  
 		
       </div>
 

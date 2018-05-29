@@ -143,11 +143,14 @@ if(Authsuperadmin::isLogged()){
            <?php 
      include('Traitement/superadminajouterutilisateur.php');
            ?>
+            <span class="messageerreur">
+                <?php if(isset($erreurchmaps)){ echo $erreurchmaps;} ?> 
+              </span> 
          <div class="formvalider">
-          <p> <?php if(isset($form_ok)){ echo $form_ok;}?></p>
+           <?php if(isset($form_ok)){ echo $form_ok;}?>
          </div>
         </div>  
-              <form class="card" method="POST" action="" enctype="multipart/form-data">
+              <form class="card" method="POST" enctype="multipart/form-data">
                 <div class="card-header">
                   <div class="ajttete">
                     <p>CrÉer Utilisateur</p>
@@ -160,11 +163,11 @@ if(Authsuperadmin::isLogged()){
 
                       <div class="form-group">
                        <center>
-                        <script src="js/jquery.min.js"></script>
+                        <script src="../js/jquery.min.js"></script>
                          <div id="profile-container">
-                           <image id="profileImage" src="images/avatar.png" />
+                           <image id="profileImage" src="images/avatar2.png" />
                         </div>
-                    <input id="imageUpload" type="file" name="photoutilisateur">
+                    <input id="imageUpload" type="file" name="photoutilisateur" value="<?php if(isset($photoutilisateur)){ echo $photoutilisateur;}?>">
                       </center>
                       </div>
                     </div>
@@ -172,18 +175,12 @@ if(Authsuperadmin::isLogged()){
                       <div class="form-group">
                         <label class="form-label">Nom <span class="obligatoire">*</span></label>
                         <input type="text" name="nom" class="form-control" placeholder="Enter Nom" value="<?php if(isset($nom)){ echo $nom;}?>">
-                            <span class="messageerreur">
-                              <?php if(isset($erreurnnom)){ echo $erreurnnom;} ?> 
-                            </span>
                       </div>
                     </div>
                     <div class="col-sm-6 col-md-6">
                       <div class="form-group">
                         <label class="form-label">Prenom <span class="obligatoire">*</span></label>
                         <input type="text" name="prenom" class="form-control" placeholder="Entrer Prenom" value="<?php if(isset($prenom)){ echo $prenom;}?>">
-                            <span class="messageerreur">
-                              <?php if(isset($erreurprenom)){ echo $erreurprenom;} ?> 
-                            </span>
                       </div>
                     </div>
                     <div class="col-sm-6 col-md-6">
@@ -191,7 +188,6 @@ if(Authsuperadmin::isLogged()){
                         <label class="form-label">Nom D'utilisateur <span class="obligatoire">*</span></label>
                         <input type="text" name="username" class="form-control" placeholder="Entrer Nom D'utilisateur" value="<?php if(isset($username)){ echo $username;}?>">
                             <span class="messageerreur">
-                              <?php if(isset($erreurusername)){ echo $erreurusername;} ?> 
                               <?php if(isset($vu)){ echo $vu;} ?> 
                             </span>
                       </div>
@@ -202,9 +198,7 @@ if(Authsuperadmin::isLogged()){
                         <input type="email" name="mail" class="form-control" placeholder="Entrer Email"
                         value="<?php if(isset($mail)){ echo $mail;}?>">
                               <span class="messageerreur">
-                               <?php if(isset($erreurmail)){ echo $erreurmail;} ?> 
                                <?php if(isset($vm)){ echo $vm;} ?>
-                               <?php if(isset($vuemail)){ echo $vuemail;} ?> 
                               </span>                        
                       </div>
                     </div>
@@ -213,7 +207,6 @@ if(Authsuperadmin::isLogged()){
                         <label class="form-label">Confirmer Email <span class="obligatoire">*</span></label>
                         <input type="email" name="cmail" class="form-control" placeholder="Confirmer Email" value="<?php if(isset($cmail)){ echo $cmail;}?>">
                                <span class="messageerreur">
-                                <?php if(isset($erreurcmail)){ echo $erreurcmail;} ?>
                                 <?php if(isset($em)){ echo $em;} ?> 
                                </span>
                       </div>
@@ -222,8 +215,7 @@ if(Authsuperadmin::isLogged()){
                       <div class="form-group">
                         <label class="form-label">Mot De Passe <span class="obligatoire">*</span></label>
                         <input type="password" name="password" class="form-control" placeholder="Entrer Mot De Passe" value="<?php if(isset($password)){ echo $password;}?>">
-                                <span class="messageerreur">
-                                  <?php if(isset($erreurpassword)){ echo $erreurpassword;} ?> 
+                                <span class="messageerreur"> 
                                   <?php if(isset($lp)){ echo $lp;} ?> 
                                 </span>
                       </div>
@@ -232,18 +224,13 @@ if(Authsuperadmin::isLogged()){
                     <div class="form-group">
                         <label class="form-label">Date De Naissance <span class="obligatoire">*</span></label>
                            <input type="date" class="form-control" name="dns" placeholder="Date De Naissance" value="<?php if(isset($dns)){ echo $dns;}?>">
-                               <span class="messageerreur">
-                                <?php if(isset($erreurdns)){ echo $erreurdns;} ?> 
-                               </span>   
+                               <span class="messageerreur">  
                     </div>
                     </div>                    
                     <div class="col-sm-6 col-md-6">
                       <div class="form-group">
                         <label class="form-label">Nif/Cin <span class="obligatoire">*</span></label>
-                        <input type="text" name="nif" class="form-control" placeholder="Entrer Nif" value="<?php if(isset($nif)){ echo $nif;}?>">
-                              <span class="messageerreur">
-                                <?php if(isset($erreurnif)){ echo $erreurnif;} ?> 
-                              </span>                        
+                        <input type="text" name="nif" class="form-control" placeholder="Entrer Nif" value="<?php if(isset($nif)){ echo $nif;}?>">                      
                       </div>
                     </div>
                     <div class="col-sm-6 col-md-6">
@@ -254,28 +241,19 @@ if(Authsuperadmin::isLogged()){
                           <option value="Celibataire">Celibataire</option>
                           <option value="Marié (e)">Marié (e)</option>
                           <option value="Divorcé (e)">Divorcé (e)</option>
-                        </select>
-                              <span class="messageerreur">
-                                <?php if(isset($erreurstatutm)){ echo $erreurstatutm;} ?> 
-                              </span>                        
+                        </select>                       
                       </div>
                     </div>                  
                     <div class="col-sm-6 col-md-6">
                       <div class="form-group">
                         <label class="form-label">Lieu De Naissance <span class="obligatoire">*</span></label>
                         <input type="text" name="lns" class="form-control" placeholder="Entrer Lieu De Naissance" value="<?php if(isset($lns)){ echo $lns;}?>">
-                              <span class="messageerreur">
-                                <?php if(isset($erreurlns)){ echo $erreurlns;} ?> 
-                              </span>
                       </div>
                     </div>
                     <div class="col-sm-6 col-md-6">
                       <div class="form-group">
                         <label class="form-label">Adresse Atuelle <span class="obligatoire">*</span></label>
                         <input type="text" name="adresse" class="form-control" placeholder="Entrer Adresse" value="<?php if(isset($adresse)){ echo $adresse;}?>">
-                              <span class="messageerreur">
-                                <?php if(isset($erreuradresse)){ echo $erreuradresse;} ?> 
-                              </span>
                       </div>
                     </div>                    
                     <div class="col-sm-6 col-md-6">
@@ -285,10 +263,7 @@ if(Authsuperadmin::isLogged()){
                           <option value="<?php if(isset($sexe)){ echo $sexe;}?>"><?php if(isset($sexe)){ echo $sexe;}?></option>
                           <option value="Masculin">Masculin</option>
                           <option value="Feminin">Feminin</option>
-                        </select>
-                              <span class="messageerreur">
-                                <?php if(isset($erreursexe)){ echo $erreursexe;} ?> 
-                              </span>                        
+                        </select>                       
                       </div>
                     </div>
                     <div class="col-sm-6 col-md-6">
@@ -300,33 +275,24 @@ if(Authsuperadmin::isLogged()){
                           <option value="Infirmiere">Infirmiere</option>
                           <option value="Medecin">Medecin</option>
                           <option value="Administrateur">Administrateur</option>
-                        </select>
-                              <span class="messageerreur">
-                                <?php if(isset($erreurfonction)){ echo $erreurfonction;} ?> 
-                              </span>                         
+                        </select>                     
                       </div>
                     </div>
                     <div class="col-sm-6 col-md-6">
                       <div class="form-group">
                         <label class="form-label">Site <span class="obligatoire">*</span></label>
                         <select name="site" class="form-control">
-                          <option value="<?php if(isset($site)){ echo $site;}?>"><?php if(isset($site)){ echo $site;}?></option>
+                          <option value=""></option>
                           <option value="Ouest">Ouest</option>
                           <option value="Artibonite">Artibonite</option>
                           <option value="Centre">Centre</option>
-                        </select>
-                              <span class="messageerreur">
-                                <?php if(isset($erreursite)){ echo $erreursite;} ?> 
-                              </span>                         
+                        </select>                         
                       </div>
                     </div>
                     <div class="col-sm-6 col-md-6">
                       <div class="form-group">
                         <label class="form-label">Telephone-1 <span class="obligatoire">*</span></label>
                         <input type="text" name="telephone1" class="form-control" placeholder="Entrer Numero Telephone" value="<?php if(isset($telephone1)){ echo $telephone1;}?>">
-                              <span class="messageerreur">
-                               <?php if(isset($erreurtelephone1)){ echo $erreurtelephone1;} ?> 
-                              </span>
                       </div>
                     </div>
                     <div class="col-sm-6 col-md-6">
@@ -338,7 +304,7 @@ if(Authsuperadmin::isLogged()){
                   </div>
                 </div>
                 <div class="card-footer text-right">
-                  <button type="submit" name="submit" class="btn btn-primary">Créer Utilisateur</button>
+                  <button type="submit" name="submit" class="btn btn-primary"> <i class="fe fe-check"></i> Créer Utilisateur</button>
                 </div>
            </form>
       </div>

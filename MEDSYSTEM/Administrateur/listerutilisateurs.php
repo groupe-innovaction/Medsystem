@@ -114,8 +114,8 @@ if(Authadmin::isLogged()){
 				   </li>
 				   <li><a href='#'> <i class="fe fe-folder-plus"> </i> Rendez-vous</a>
 					   <ul>
-						 <li><a href=''>Prendre Rendez-vous</a></li>
-						 <li><a href=''>Lister Rendez-vous</a></li>
+						 <li><a href='Prenderendezvous.php'>Prendre Rendez-vous</a></li>
+						 <li><a href='listerRendezvous.php'>Lister Rendez-vous</a></li>
 					  </ul>  
 				   </li>
 		       </ul>
@@ -156,7 +156,7 @@ if(Authadmin::isLogged()){
                     ?>
  			<div class="linkvoirutilisateur row">	                 
                <div class="card">
-                 <a href="">
+                 <a href="profil.php?idlogin=<?php echo $don['idlogin']; ?>">
                   <div class="card-body">
                     <div class="media">
                       <span class="avatar avatar-xxl mr-5" style="background-image: url(photo/<?= $don['photoutilisateur'] ?>)"></span>

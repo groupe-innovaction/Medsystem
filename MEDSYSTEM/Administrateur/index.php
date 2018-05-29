@@ -114,8 +114,8 @@ if(Authadmin::isLogged()){
 				   </li>
 				   <li><a href='#'> <i class="fe fe-folder-plus"> </i> Rendez-vous</a>
 					   <ul>
-						 <li><a href=''>Prendre Rendez-vous</a></li>
-						 <li><a href=''>Lister Rendez-vous</a></li>
+						 <li><a href='Prenderendezvous.php'>Prendre Rendez-vous</a></li>
+						 <li><a href='listerRendezvous.php'>Lister Rendez-vous</a></li>
 					  </ul>  
 				   </li>
 		       </ul>
@@ -138,14 +138,14 @@ if(Authadmin::isLogged()){
             <div class="row row-cards">
             <?php
                include("../bd/connect.php");
-               $totaleutilisateurs = $conbd->query('SELECT * FROM logintable WHERE site="'.$_SESSION['var6admin'].'"');
+               $totaleutilisateurs = $conbd->query('SELECT * FROM logintable WHERE site="'.$_SESSION['var6admin'].'" AND statut != "Bloquer" ');
                $totale = $totaleutilisateurs->rowcount();
             ?>			
               <div class="col-6 col-sm-4 col-lg-3">
                 <div class="card">
                   <div class="card-body p-3 text-center">
-                    <div class="h1 m-0"><?php echo $totale; ?></div>
-                    <div class="text-muted mb-4"> <i class="fe fe-user"> </i> Utilisateurs</div>
+                    <div class="h1 m-0">  <i class="fe fe-user"> </i> </div>
+                    <div class="text-muted mb-4"><?php echo $totale; ?>  Utilisateurs </div>
                   </div>
                 </div>
               </div>
@@ -156,8 +156,8 @@ if(Authadmin::isLogged()){
               <div class="col-6 col-sm-4 col-lg-3">
                 <div class="card">
                   <div class="card-body p-3 text-center">
-                    <div class="h1 m-0"><?php echo $totaleDossierCreer; ?></div>
-                    <div class="text-muted mb-4"> <i class="fe fe-folder"> </i> Dossiers</div>
+                    <div class="h1 m-0"> <i class="fe fe-folder"> </i> </div>
+                    <div class="text-muted mb-4"> <?php echo $totaleDossierCreer; ?> Dossiers</div>
                   </div>
                 </div>
               </div>
@@ -168,8 +168,8 @@ if(Authadmin::isLogged()){
               <div class="col-6 col-sm-4 col-lg-3">
                 <div class="card">
                   <div class="card-body p-3 text-center">
-                    <div class="h1 m-0"><?php echo $totalerendezvous; ?></div>
-                    <div class="text-muted mb-4"> <i class="fe fe-folder-plus"> </i> Rendez-vous</div>
+                    <div class="h1 m-0"> <i class="fe fe-folder-plus"> </i> </div>
+                    <div class="text-muted mb-4"> <?php echo $totalerendezvous; ?> Rendez-vous</div>
                   </div>
                 </div>
               </div>
@@ -207,7 +207,7 @@ if(Authadmin::isLogged()){
                
                   <div class="card-body">
                     <div class="media">
-                      <span class="avatar avatar-xxl mr-5" style="background-image: url(../photo/<?php echo $_SESSION['var1admin'] ?>)"></span>
+                      <span class="avatar avatar-xxl mr-5" id="adminimg" style="background-image: url(../photo/<?php echo $_SESSION['var1admin'] ?>)"></span>
 					  
 					  <div class="media-body" id="adminfonom">				  
                         <h4 class="m-0"><?php echo $_SESSION['var2admin'] ?> <?php echo $_SESSION['var3admin'] ?></h4>

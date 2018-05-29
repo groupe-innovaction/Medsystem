@@ -52,10 +52,20 @@ if(!empty($_POST['username']) && !empty($_POST['password'])){
                     $prenominf=$don['prenom'];
                     $fonctioninf=$don['fonction'];
 
+                    $idinf=$don['idlogin'];
+                    $siteinf=$don['site'];
+                    $usernameinf=$don['username'];
+                    $mailinf=$don['mail'];
+
                $_SESSION['var1inf']=$photoinf;
 			         $_SESSION['var2inf']=$nominf;
                $_SESSION['var3inf']=$prenominf;
                $_SESSION['var4inf']=$fonctioninf;
+
+               $_SESSION['var5inf']=$idinf;
+               $_SESSION['var6inf']=$siteinf;
+               $_SESSION['var7inf']=$usernameinf;
+               $_SESSION['var8inf']=$mailinf;               
 			   
            }
 		   
@@ -143,10 +153,20 @@ if(!empty($_POST['username']) && !empty($_POST['password'])){
                     $prenomsec=$don['prenom'];
                     $fonctionsec=$don['fonction'];
 
+                    $idsec=$don['idlogin'];
+                    $sitesec=$don['site'];
+                    $usernamesec=$don['username'];
+                    $mailsec=$don['mail'];
+
                $_SESSION['var1sec']=$photosec;
 			         $_SESSION['var2sec']=$nomsec;
                $_SESSION['var3sec']=$prenomsec;
                $_SESSION['var4sec']=$fonctionsec;
+
+               $_SESSION['var5sec']=$idsec;
+               $_SESSION['var6sec']=$sitesec;
+               $_SESSION['var7sec']=$usernamesec;
+               $_SESSION['var8sec']=$mailsec;
                
 			   
            }
