@@ -128,7 +128,20 @@ if(Authsec::isLogged()){
 		  </div>
        </div>
 
-			  
+           <?php
+		   include("../bd/connect.php");
+          if(!isset($_GET['idRDV']))
+          {
+          header('location:index.php');
+          }
+          else{
+          $idprdv=intval($_GET['idRDV']);
+          }
+          $req=$conbd->query('SELECT * FROM rendezvous WHERE idRDV = "'.$idprdv.'"');
+
+          $don=$req->fetch(); 
+            if(isset($don['idRDV'])){ ?>
+			
       <div class="page-content">
        <div class="container">
 	   
@@ -143,7 +156,7 @@ if(Authsec::isLogged()){
 	   <div class="row">	   
 		<div class="col-md-12">  
 		   <div class="SECmessage">
-			 <?php include("Traitement/SecPatient.php"); ?>
+			 <?php include("Traitement/SecPatientRDV.php"); ?>
 			  <div class="DvaliderSEC">
                <?php if(isset($CreationDok)){ echo $CreationDok;}?>
               </div>
@@ -364,7 +377,11 @@ if(Authsec::isLogged()){
 	   </div>
 		
       </div>
-
+	      <?php
+          }else{
+             header('location:index.php');
+          }
+          ?>	
 
     </div>
  <script>

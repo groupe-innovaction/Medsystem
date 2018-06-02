@@ -159,6 +159,14 @@ if(Authsuperadmin::isLogged()){
                       </div>
                     </div> 
 
+					
+                    <div class="col-sm-6 col-md-6 offset-6">
+                      <div class="form-group">
+                        <label class="form-label">Entrer votre identifiant si vous en avez déjà un</label>
+                        <input type="text" name="identifiant" class="form-control" placeholder="Identifiant fournit par l'hopital" value="">
+                      </div>
+                    </div>
+                     </br>					
                     <div class="col-sm-6 col-md-6">
                       <div class="form-group">
                         <label class="form-label">Nom <span class="obligatoire">*</span></label>

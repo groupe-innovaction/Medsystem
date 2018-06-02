@@ -114,7 +114,7 @@ if(Authadmin::isLogged()){
 				   </li>
 				   <li><a href='#'> <i class="fe fe-folder-plus"> </i> Rendez-vous</a>
 					   <ul>
-						 <li><a href='Prenderendezvous.php'>Prendre Rendez-vous</a></li>
+						 <li><a href='Prenderendezvous.php'>Demande Rendez-vous</a></li>
 						 <li><a href='listerRendezvous.php'>Lister Rendez-vous</a></li>
 					  </ul>  
 				   </li>

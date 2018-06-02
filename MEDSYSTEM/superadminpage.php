@@ -111,7 +111,7 @@ if(Authsuperadmin::isLogged()){
 						 <li><a href='superadminvoirutilisateurs.php'>Lister Utilisateurs</a></li>
 					  </ul> 
 				   </li>
-				   <li><a href=''> <i class="fe fe-folder"> </i> Dossiers</a>
+				   <li><a href=''> <i class="fe fe-user-plus"> </i> Patients</a>
 					  <ul>
 						 <li><a href='supadmcreationdossiers.php'>Creer Dossier</a></li>
 						 <li><a href='supadmrechercherdossier.php'>Rechercher Dossier</a></li>

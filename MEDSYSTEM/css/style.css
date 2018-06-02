@@ -147,7 +147,6 @@ text-transform: uppercase;
 	text-transform: uppercase;
 	line-height: 20px;
 	text-align: center;
-	margin-left: 10px;
 	font-size: 15px;
 	font-weight: bold;	
 }
@@ -427,7 +426,7 @@ color:#900;
     height:30px;
    	font-weight: bold;
     color: red;
-    font-size: 13.5px;
+    font-size: 15px;
 	text-transform:uppercase;
 	margin-top:-5px;   	
 }

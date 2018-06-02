@@ -189,7 +189,7 @@ if(Authadmin::isLogged()){
                           </td>
                           <td><?= $don['siterdv'] ?></td>
                           <td class="text-right">
-                            <a href="" id="btnvaliderdv" class="btn btn-secondary btn-sm">Créer Dossier</a>
+                            <a href="" id="btnvaliderdv" class="btn btn-secondary btn-sm"><i class="fe fe-folder-plus" data-toggle="tooltip" title="Créer Dossier"></i></a>
                           </td>
                         </tr>
 						 <?php 
@@ -250,8 +250,11 @@ if(Authadmin::isLogged()){
                           </td>
                           <td><?= $don['siterdv'] ?></td>
                           <td class="text-right">
-                            <a href="EtatRendezvous.php?idRDV=<?php echo $don['idRDV']; ?>" id="btnvaliderdv" class="btn btn-secondary btn-sm">Validé</a>
-                          </td>
+                            <a style="margin-right:-20px;" href="valider.php?idRDV=<?php echo $don['idRDV']; ?>" id="btnvaliderdv" class="btn btn-secondary btn-sm"><i class="fe fe-check-circle" data-toggle="tooltip" title="Validée"></i></a>
+                          </td>	
+                          <td class="text-right">
+						  <a href="annuler.php?idRDV=<?php echo $don['idRDV']; ?>" id="btnvaliderdv2" class="btn btn-secondary btn-sm"><i class="fe fe-x-circle" data-toggle="tooltip" title="Annulée"></i></a>
+                          </td>						  
                         </tr>
 						 <?php 
 						 } 
@@ -311,8 +314,11 @@ if(Authadmin::isLogged()){
                           </td>
                           <td><?= $don['siterdv'] ?></td>
                           <td class="text-right">
-						  <a href="EtatRendezvous.php?idRDV=<?php echo $don['idRDV']; ?>" id="btnvaliderdv2" class="btn btn-secondary btn-sm">Rajoutée</a>
+						  <a style="margin-right:-20px;" href="rajouter.php?idRDV=<?php echo $don['idRDV']; ?>" id="btnvaliderdv" class="btn btn-secondary btn-sm"><i class="fe fe-plus-circle" data-toggle="tooltip" title="Rajoutée"></i></a>
                           </td>
+                          <td class="text-right">
+						  <a href="" id="btnvaliderdv2" class="btn btn-secondary btn-sm"><i class="fe fe-trash-2" data-toggle="tooltip" title="Suprimée"></i></a>
+                          </td>						  
                         </tr>
 						 <?php 
 						 } 

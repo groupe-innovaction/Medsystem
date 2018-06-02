@@ -84,7 +84,7 @@ if(Authmedecin::isLogged()){
                     <span class="ml-2 d-none d-lg-block">
                       <span class="text-default"><?php echo $_SESSION['var2medecin'] ?>  </span>
                       <span class="text-default"><?php echo $_SESSION['var3medecin'] ?>  </span>
-                      <small class="text-muted d-block mt-1"> <?php echo $_SESSION['var4medecin'] ?> </small>
+                      <small class="text-muted d-block mt-1"> <span class="status-icon bg-success"></span><?php echo $_SESSION['var4medecin'] ?> </small>
 
                     </span>
                   </a>

@@ -138,7 +138,7 @@ if(Authadmin::isLogged()){
 	   <div class="container">
 	       <br>
          <div class="positionadm">
-          <p> <a href="index.php"><i class="fe fe-home"> </i> Acceuil </a> <i class="fe fe-chevron-right"> </i><a href="listerRendezvous.php"> Lister Rendezvous </a><i class="fe fe-chevron-right"> </i> Valider | Annuler Rendez-vous</p>
+          <p> <a href="index.php"><i class="fe fe-home"> </i> Acceuil </a> <i class="fe fe-chevron-right"> </i><a href="listerRendezvous.php"> Lister Rendezvous </a><i class="fe fe-chevron-right"> </i> Annuler Rendez-vous</p>
          </div>	
 		
  <div class="row">		
@@ -213,36 +213,7 @@ if(Authadmin::isLogged()){
               </form>		   
 		   </div> 			 
            <div class="col-md-8">
-            <?php
-			 include("Traitement/AdminValiderRDV.php");
-			?>		
-				   <span class="messageerreurrdv">
-					 <?php if(isset($repconfirmation1)){ echo $repconfirmation1; } ?>
-				   </span>			  
-           <span class="messageerreurrdv">
-           <?php if(isset($RjouterDabord)){ echo $RjouterDabord; } ?>
-           </span>            
-		    <form class="card" method="POST">
-				 <div class="partievaliderrdv">
-					<p>Valider La Demande</p>
-				 </div>				
-                   <br>
-				<div class="col-sm-12 col-md-12">
-					<div class="form-group">
-					  <label class="form-label">Date Du Rendez-vous <span class="obligatoire">*</span></label>
-					  <input type="date" class="form-control" name="Confirmerdaterdv" value="<?php if(isset($Confirmerdaterdv)) echo $Confirmerdaterdv; ?>">  
-					</div>
-				</div> 
-				<div class="col-sm-12 col-md-12">
-					<div class="form-group">
-					  <label class="form-label">Heure Du Rendez-vous <span class="obligatoire">*</span></label>
-					  <input type="time" class="form-control" name="Confirmerheurerdv" value="<?php if(isset($Confirmerheurerdv)) echo $Confirmerheurerdv; ?>">  
-					</div>
-			   </div>	
-				<div  id="validerrdv" class="card-footer text-center">
-                  <button type="submit" name="valierRDvBtn" class="btn btn-primary"> <i class="fe fe-check-circle"> </i> Valider la Demande</button> 
-                </div>			   
-		    </form>	
+
             <?php include("Traitement/AdminAnnulerRDV.php"); ?>
 			  <span class="messageerreurrdv2">
 				<?php if(isset($rdvAnnuler)){ echo $rdvAnnuler; } ?>
@@ -276,41 +247,7 @@ if(Authadmin::isLogged()){
                   <button type="submit" name="BtnannulerRDV" class="btn btn-primary"> <i class="fe fe-x-circle"> </i> Annuler la Demande</button> 
                 </div>			   
 		    </form>	
-
 			
-            <?php include("Traitement/AdminRajouterRDV.php"); ?>
-			  <span class="messageerreurrdv2">
-				<?php if(isset($rdvRajouter)){ echo $rdvRajouter; } ?>
-			  </span>			
-			  <span class="messageerreurrdv">
-				<?php if(isset($rdvRajouterEchec)){ echo $rdvRajouterEchec; } ?>
-			  </span>
-			  <span class="messageerreurrdv">
-				<?php if(isset($repRajouter)){ echo $repRajouter; } ?>
-			  </span>
-			  <span class="messageerreurrdv">
-				<?php if(isset($repDejaRajouter)){ echo $repDejaRajouter; } ?>
-			  </span>			
-		    <form class="card" method="POST">
-				 <div class="partierajouterrdv">
-					<p>Rajouter une Demande </p>
-				 </div>				
-                   
-				   <div class="radiordv">
-                     <div class="custom-controls-stacked">
-                        <label class="custom-switch">
-                          <input type="checkbox" name="radiordv2" value="Non" class="custom-switch-input">
-                          <span class="custom-switch-indicator"></span>
-                          <span class="custom-switch-description">Oui Je Veux Rajouter Cette Demande</span>
-                        </label>						  
-                     </div>
-					 <br>
-				   </div>		
-						
-				<div  id="Rajouterrdv" class="card-footer text-center">
-                  <button type="submit" name="AdminRajouter" class="btn btn-primary"> <i class="fe fe-plus"> </i>Rajouter la Demande</button> 
-                </div>			   
-		    </form>				  
 		   </div> 
 		 </div> 
 		</div> 

@@ -104,21 +104,34 @@ if(Authinf::isLogged()){
 				   </li>
 		       </ul>
 		     </div>
+              <div class="col-4 offset-8">
+                <form class="input-icon">
+                  <input style="margin-top:10px;" type="text" name="search_text" id="search_text" class="form-control header-search" placeholder="Rechercher Patient" tabindex="1">
+                  <div class="input-icon-addon">
+                    <i class="fe fe-search"></i>
+                  </div>
+                </form>
+              </div>
+                    <center>			  
+                      <div class="col-md-12"> 					   
+				        <div class="reponserecherche" id="resultRechercheDossier"></div>
+					  </div>	
+					 </center>				 
 		  </div>
        </div>
 	           <?php
 		   include("../bd/connect.php");
-          if(!isset($_GET['idDossier']))
+          if(!isset($_GET['idPatient']))
           {
           header('location:index.php');
           }
           else{
-          $InfidDossier=intval($_GET['idDossier']);
+          $InfidDossier=intval($_GET['idPatient']);
           }
-          $req=$conbd->query('SELECT * FROM dossiers WHERE idDossier = "'.$InfidDossier.'" AND SiteCreationDossier="'.$_SESSION['var6inf'].'"');
+          $req=$conbd->query('SELECT * FROM patients WHERE idPatient = "'.$InfidDossier.'" AND SiteCreationpatient="'.$_SESSION['var6inf'].'"');
 
           $don=$req->fetch(); 
-            if(isset($don['idDossier'])){ ?>
+            if(isset($don['idPatient'])){ ?>
 			
        <div class="page-content">  
        <div class="container">
@@ -128,51 +141,26 @@ if(Authinf::isLogged()){
             </div>
 			
 			<div id="completerD">
-			  <h2><?php echo $don['nomDossier'] ?> <?php echo $don['prenomDossier'] ?></h2>
+			  <h2><?php echo $don['nomPatient'] ?> <?php echo $don['prenomPatient'] ?> - <?php echo $don['idPatient'] ?></h2>
 	    	</div>
+			<?php
+			 include("Controleur/completerD.php");
+			?>
+			 <span class="messageerreurrdv"> 
+			    <?php if(isset($erreurCDossier)){echo $erreurCDossier;}?> 
+			    <?php if(isset($CDNo)){echo $CDNo;}?> 				
+			 </span>
+			 <span class="formvalider">
+			   <?php if(isset($CDok)){ echo $CDok;}?>
+			 </span>			 
 	   <div class="row">	   
 		<div class="col-md-12"> 
 		 <div class="row">
 		 
-			<form class="col-md-8">
+             <form method="POST" class="col-md-8">
+			 
 			   <div class="card">
-                <div class="card-header">
-                  <div class="dossiertete">
-                    <p>Antécédents</p>
-                  </div>
-                </div>
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-sm-6 col-md-6">
-                      <div class="form-group">
-                        <label class="form-label">Antécédents Médicaux</label>
-                        <input type="text" name="antmedicaux" class="form-control" placeholder="Enter Antécédents Médicaux" value="">
-                      </div>
-                    </div>
-                    <div class="col-sm-6 col-md-6">
-                      <div class="form-group">
-                        <label class="form-label">Antécédents Churigicaux</label>
-                        <input type="text" name="antchurigicaux" class="form-control" placeholder="Entrer Antécédents Churigicaux" value="">
-                      </div>
-                    </div>
-                    <div class="col-sm-6 col-md-6">
-                      <div class="form-group">
-                        <label class="form-label">Antécédents Familiaux</label>
-                        <input type="text" name="antecedentf" class="form-control" placeholder="Entrer Antécédents Familiaux" value="">
-                      </div>
-                    </div>
-                    <div class="col-sm-6 col-md-6">
-                      <div class="form-group">
-                        <label class="form-label">Allergies Et Intolérence</label>
-                        <input type="text" name="allergies" class="form-control" placeholder="Entrer Allergies Et Intolérence"
-                        value="">                      
-                      </div>
-                    </div>                 
-                  </div>
-                </div>
-			  </div>
-			  
-			   <div class="card">
+			   
                 <div class="card-header">
                   <div class="dossiertete">
                     <p>Biométrie</p>
@@ -182,39 +170,30 @@ if(Authinf::isLogged()){
                   <div class="row">
                     <div class="col-sm-6 col-md-6">
                       <div class="form-group">
-                        <label class="form-label">Taille</label>
-                        <input type="text" name="taille" class="form-control" placeholder="Enter Taille" value="">
+                        <label class="form-label">Taille <span class="obligatoire">*</span></label>
+                        <input type="text" name="taille" class="form-control" placeholder="Enter Taille" value="<?php if(isset($taille)){echo $taille; }?>">
                       </div>
                     </div>
                     <div class="col-sm-6 col-md-6">
                       <div class="form-group">
-                        <label class="form-label">Poids</label>
-                        <input type="text" name="poids" class="form-control" placeholder="Entrer Poids" value="">
+                        <label class="form-label">Poids <span class="obligatoire">*</span></label>
+                        <input type="text" name="poids" class="form-control" placeholder="Entrer Poids" value="<?php if(isset($poids)){echo $poids; }?>">
                       </div>
-                    </div>
+                    </div> 
                     <div class="col-sm-6 col-md-6">
                       <div class="form-group">
-                        <label class="form-label">Groupe Sanguin</label>
-                        <select name="groupesanguin" class="form-control">
-                          <option value=""></option>
-                          <option value="A+">A+</option>
-                          <option value="A-">A-</option>
-                          <option value="B+">B+</option>
-						  <option value="B-">B-</option>
-						  <option value="AB+">AB+</option>
-						  <option value="AB-">AB-</option>
-						  <option value="O+">O+</option>
-						  <option value="O-">O-</option>
-                        </select>                     
+                        <label class="form-label">Tension Arterielle <span class="obligatoire">*</span></label>
+                        <input type="text" name="tensionArt" class="form-control" placeholder="Entrer Tension Arterielle"
+                        value="<?php if(isset($tensionArt)){echo $tensionArt; }?>">    
+                      </div>
+                    </div> 	
+                    <div class="col-sm-6 col-md-6">
+                      <div class="form-group">
+                        <label class="form-label">Pouls <span class="obligatoire">*</span></label>
+                        <input type="text" name="pouls" class="form-control" placeholder="Entrer Tension Cardiaque"
+                        value="<?php if(isset($pouls)){echo $pouls; }?>">    
                       </div>
                     </div> 					
-                    <div class="col-sm-6 col-md-6">
-                      <div class="form-group">
-                        <label class="form-label">Indicateurs Biologique</label>
-                        <input type="text" name="indicateursbiologique" class="form-control" placeholder="Entrer Indicateurs Biologique"
-                        value="">    
-                      </div>
-                    </div>                 
                   </div>
                 </div>
 			  </div>
@@ -223,16 +202,23 @@ if(Authinf::isLogged()){
 			        <br>
                     <div class="col-sm-12 col-md-12">
                       <div class="form-group">
-                        <label class="form-label">Commentaire<span class="obligatoire">*</span></label>                  
-                         <textarea name="prescription" class="form-control" placeholder="Commenter Ce Dossier..." rows="6" cols="47"value=""></textarea>
+                        <label class="form-label">Motif De la Consultation <span class="obligatoire">*</span></label>
+                        <input type="text" name="motifConsultation" class="form-control" placeholder="Entrer Le Motif De Votre Consultation"
+                        value="<?php if(isset($motifConsultation)){echo $motifConsultation; }?>">    
+                      </div>
+                    </div> 					
+                    <div class="col-sm-12 col-md-12">
+                      <div class="form-group">
+                        <label class="form-label">Observation</label>                  
+                         <textarea name="observation" class="form-control" placeholder="Commenter Ce Dossier..." rows="6" cols="47"value=""></textarea>
 					  </div>
                     </div>			 			 
-			 </div>			  
+			 </div>				  
 					<div class="text-right">
-					 <button type="submit" name="" class="btn btn-primary"/> <i class="fe fe-check"> </i> Valider </button>
-					</div>	
-                    <br><br>					
-			</form>
+					 <button type="submit" name="completerDossier" class="btn btn-primary"> <i class="fe fe-check"> </i> Valider </button>
+					</div>
+                   <br><br>
+		</form>		
 		
 			 <div class="col-md-4">
 			  <div class="card">
@@ -278,6 +264,35 @@ if(Authinf::isLogged()){
           ?>
 
     </div>
-	
+ <script>
+$(document).ready(function(){
+
+ load_data();
+
+ function load_data(query)
+ {
+  $.ajax({
+   url:"Controleur/rechercherPatients.php",
+   method:"POST",
+   data:{query:query},
+   success:function(data)
+   {
+    $('#resultRechercheDossier').html(data);
+   }
+  });
+ }
+ $('#search_text').keyup(function(){
+  var search = $(this).val();
+  if(search != '')
+  {
+   load_data(search);
+  }
+  else
+  {
+   load_data();
+  }
+ });
+});
+</script>	
   </body>
 </html>
