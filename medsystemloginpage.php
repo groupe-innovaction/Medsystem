@@ -1,0 +1,264 @@
+<?php
+session_start();
+ if(isset($_POST['submit'])){
+if(!empty($_POST['username']) && !empty($_POST['password'])){ 
+   extract($_POST);
+   // $password = sha1($password);
+    include("bd/connect.php");
+
+    $requser = $conbd->prepare("SELECT * FROM utilisateurs WHERE  username= ? AND password= ? AND fonction='super-administrateur'"); 
+            $requser->execute(array($username,$password));
+            $userexist = $requser->rowCount();
+            
+            if($userexist == 1){
+            $_SESSION['Authsuperadmin'] = array(
+             'username' => $username,
+             'password' => $password
+              );
+         header('Location:Superadmin/superadminpage.php');
+      $username=$_POST['username'];
+      $password=$_POST['password'];
+        $req=$conbd->query('SELECT * FROM utilisateurs WHERE username = "'.$username.'" AND password="'.$password.'" AND fonction="super-administrateur"');
+              while($don=$req->fetch()){
+                    
+                    $photosupadm=$don['photoutilisateur'];
+                    $prenomsupadm=$don['prenom'];
+                    $fonctionsupadm=$don['fonction'];
+                    $nomsupadm=$don['nom'];
+                     $sitespadm=$don['site'];
+
+               $_SESSION['var1']=$photosupadm;
+               $_SESSION['var2']=$prenomsupadm;
+               $_SESSION['var3']=$fonctionsupadm;
+               $_SESSION['var4']=$nomsupadm;
+               $_SESSION['var6']=$sitespadm;
+           }
+      }   
+	    $requser = $conbd->prepare("SELECT * FROM utilisateurs WHERE  username= ? AND password= ? AND fonction='infirmiere' AND statut !='Bloquer'"); 
+            $requser->execute(array($username,$password));
+            $userexist = $requser->rowCount();
+            
+            if($userexist == 1){
+            $_SESSION['Authinf'] = array(
+             'username' => $username,
+             'password' => $password
+              );
+         header('Location:Infirmiere/index.php');
+      $username=$_POST['username'];
+      $password=$_POST['password'];
+        $req=$conbd->query('SELECT * FROM utilisateurs WHERE username = "'.$username.'" AND password="'.$password.'" AND fonction="infirmiere" AND statut !="Bloquer"');
+              while($don=$req->fetch()){
+                    
+                    $photoinf=$don['photoutilisateur'];
+					          $nominf=$don['nom'];
+                    $prenominf=$don['prenom'];
+                    $fonctioninf=$don['fonction'];
+
+                    $idinf=$don['idlogin'];
+                    $siteinf=$don['site'];
+                    $usernameinf=$don['username'];
+                    $mailinf=$don['mail'];
+
+               $_SESSION['var1inf']=$photoinf;
+			         $_SESSION['var2inf']=$nominf;
+               $_SESSION['var3inf']=$prenominf;
+               $_SESSION['var4inf']=$fonctioninf;
+
+               $_SESSION['var5inf']=$idinf;
+               $_SESSION['var6inf']=$siteinf;
+               $_SESSION['var7inf']=$usernameinf;
+               $_SESSION['var8inf']=$mailinf;               
+			   
+           }
+		   
+      }
+
+	$requser = $conbd->prepare("SELECT * FROM utilisateurs WHERE  username= ? AND password= ? AND fonction='administrateur' AND statut!='Bloquer'"); 
+            $requser->execute(array($username,$password));
+            $userexist = $requser->rowCount();
+            
+            if($userexist == 1){
+            $_SESSION['Authadmin'] = array(
+             'username' => $username,
+             'password' => $password
+              );
+         header('Location:Administrateur/index.php');
+      $username=$_POST['username'];
+      $password=$_POST['password'];
+        $req=$conbd->query('SELECT * FROM utilisateurs WHERE username = "'.$username.'" AND password="'.$password.'" AND fonction="administrateur" AND statut !="Bloquer"');
+              while($don=$req->fetch()){
+                    
+                    $photoadmin=$don['photoutilisateur'];
+					          $nomadmin=$don['nom'];
+                    $prenomadmin=$don['prenom'];
+                    $fonctionadmin=$don['fonction'];
+                    $idadm=$don['idlogin'];
+                    $siteadm=$don['site'];
+                    $usernameadm=$don['username'];
+                    $mailadm=$don['mail'];
+
+               $_SESSION['var1admin']=$photoadmin;
+			         $_SESSION['var2admin']=$nomadmin;
+               $_SESSION['var3admin']=$prenomadmin;
+               $_SESSION['var4admin']=$fonctionadmin;
+               $_SESSION['var5admin']=$idadm;
+               $_SESSION['var6admin']=$siteadm;
+               $_SESSION['var7admin']=$usernameadm;
+               $_SESSION['var8admin']=$mailadm;
+			   
+           }
+      }
+	  	$requser = $conbd->prepare("SELECT * FROM utilisateurs WHERE  username= ? AND password= ? AND fonction='medecin' AND statut !='Bloquer'"); 
+            $requser->execute(array($username,$password));
+            $userexist = $requser->rowCount();
+            
+            if($userexist == 1){
+            $_SESSION['Authmedecin'] = array(
+             'username' => $username,
+             'password' => $password
+              );
+         header('Location:Medecin/index.php');
+      $username=$_POST['username'];
+      $password=$_POST['password'];
+        $req=$conbd->query('SELECT * FROM utilisateurs WHERE username = "'.$username.'" AND password="'.$password.'" AND fonction="medecin" AND statut !="Bloquer"');
+              while($don=$req->fetch()){
+                    
+                    $photomedecin=$don['photoutilisateur'];
+					$nommedecin=$don['nom'];
+                    $prenommedecin=$don['prenom'];
+                    $fonctionmedecin=$don['fonction'];
+                    $idmed=$don['idlogin'];
+                    $sitemed=$don['site'];
+                    $usernamemed=$don['username'];
+                    $mailmed=$don['mail'];                    
+
+               $_SESSION['var1medecin']=$photomedecin;
+			        $_SESSION['var2medecin']=$nommedecin;
+               $_SESSION['var3medecin']=$prenommedecin;
+               $_SESSION['var4medecin']=$fonctionmedecin;
+
+               $_SESSION['var5medecin']=$idmed;
+               $_SESSION['var6medecin']=$sitemed;
+               $_SESSION['var7medecin']=$usernamemed;
+               $_SESSION['var8medecin']=$mailmed;               
+			   
+           }
+      }
+  $requser = $conbd->prepare("SELECT * FROM utilisateurs WHERE  username= ? AND password= ? AND fonction='secretaire' AND statut !='Bloquer'"); 
+            $requser->execute(array($username,$password));
+            $userexist = $requser->rowCount();
+            
+            if($userexist == 1){
+            $_SESSION['Authsec'] = array(
+             'username' => $username,
+             'password' => $password
+              );
+         header('Location:Secretaire/index.php');
+      $username=$_POST['username'];
+      $password=$_POST['password'];
+        $req=$conbd->query('SELECT * FROM utilisateurs WHERE username = "'.$username.'" AND password="'.$password.'" AND fonction="secretaire" AND statut !="Bloquer"');
+              while($don=$req->fetch()){
+                    
+                    $photosec=$don['photoutilisateur'];
+					          $nomsec=$don['nom'];
+                    $prenomsec=$don['prenom'];
+                    $fonctionsec=$don['fonction'];
+
+                    $idsec=$don['idlogin'];
+                    $sitesec=$don['site'];
+                    $usernamesec=$don['username'];
+                    $mailsec=$don['mail'];
+
+               $_SESSION['var1sec']=$photosec;
+			         $_SESSION['var2sec']=$nomsec;
+               $_SESSION['var3sec']=$prenomsec;
+               $_SESSION['var4sec']=$fonctionsec;
+
+               $_SESSION['var5sec']=$idsec;
+               $_SESSION['var6sec']=$sitesec;
+               $_SESSION['var7sec']=$usernamesec;
+               $_SESSION['var8sec']=$mailsec;
+               
+			   
+           }
+      }
+      else{
+     $message="<center>Username Ou Password Incorrect</center>";
+
+    }
+  }else{
+       $message="<center>Veuillez Completer Tous Les Champs</center>";
+      }
+  }    
+?>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Content-Language" content="en" />
+	<meta charset="utf-08">
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="theme-color" content="#4188c9">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <title>LOGIN | MEDSYSTEM</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,500,500i,600,600i,700,700i&amp;subset=latin-ext">
+    <script src="./assets/js/require.min.js"></script>
+    <script>
+      requirejs.config({
+          baseUrl: '.'
+      		});
+    </script>
+    <link href="./assets/css/dashboard.css" rel="stylesheet" />
+    <script src="./assets/js/dashboard.js"></script>
+    <link href="./assets/plugins/charts-c3/plugin.css" rel="stylesheet" />
+    <script src="./assets/plugins/charts-c3/plugin.js"></script>
+    <link href="./assets/plugins/maps-google/plugin.css" rel="stylesheet" />
+    <script src="./assets/plugins/maps-google/plugin.js"></script>
+    <script src="./assets/plugins/input-mask/plugin.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+  </head>
+  <body class="loginbackimg">
+    <div class="page">
+      <div class="page-single">
+        <div class="container">
+          <div class="row">
+            <div class="col col-login mx-auto">
+              <div class="text-center mb-6">
+                <img src="images/LOGO2.png" class="h-6" alt="">
+              </div>
+              <form class="card" action="" method="post">
+                <div class="card-body p-6">
+                  <div class="card-title"> <center> <b> AUTHENTIFICATION </b> </center> </div>
+			      <div class="messageerreur">
+                   <p> <?php if(isset($message)){ echo $message;} ?> </p>
+                  </div>				  
+                  <div class="form-group">
+                    <label class="form-label"> <i class="fe fe-user"> </i> Nom D'utilisateur</label>
+                    <input type="text" name="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Entrer Nom D'utilisateur" value="<?php if(isset($username)){ echo $username;}?>">
+                  </div>
+                  
+                  <div class="form-group">
+                    <label class="form-label"> <i class="fe fe-lock"> </i> Mot De Passe</label>
+                    <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Entrer Mot De Passe">
+                  </div>
+                  <div class="form-footer">
+                    <div class="loginsystembtn">
+                    <button type="submit" name="submit" class="btn btn-block"> <i class="fe fe-check-circle"> </i> CONNECTEZ</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
